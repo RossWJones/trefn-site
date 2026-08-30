@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trefn - custom operations platforms for SME manufacturers</title>
+<meta name="description" content="Trefn builds custom operations platforms - quoting, scheduling, job tracking - for SME manufacturers, at a fraction of agency cost. Operations reviews from £1,750.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #26333B;        /* deep slate */
+    --ink-soft: #51616B;   /* muted slate for body copy */
+    --paper: #FAF9F6;      /* warm paper */
+    --card: #FFFFFF;
+    --line: #E4E1DA;
+    --accent: #166A5D;     /* slate teal - the "start here" colour */
+    --accent-soft: #EAF3F0;
+    --radius: 10px;
+    --max: 880px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 17px; line-height: 1.65;
+    color: var(--ink); background: var(--paper);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+  a { color: var(--accent); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
+  .price { font-variant-numeric: tabular-nums; }
+
+  header { padding: 28px 0; }
+  .header-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
+  .wordmark { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 0.01em; }
+  .say { font-size: 14px; color: var(--ink-soft); }
+
+  .hero { padding: 56px 0 48px; }
+  .hero h1 { font-size: clamp(30px, 5vw, 42px); max-width: 620px; margin-bottom: 18px; }
+  .hero p { font-size: 18px; color: var(--ink-soft); max-width: 560px; }
+  .hero .meaning { margin-top: 22px; font-size: 15px; color: var(--ink-soft); border-left: 3px solid var(--accent); padding-left: 14px; }
+
+  .ladder { padding: 8px 0 56px; }
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
+  .card {
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 24px 22px;
+    display: flex; flex-direction: column;
+  }
+  .card.start { border-color: var(--accent); border-width: 2px; }
+  .badge {
+    align-self: flex-start; background: var(--accent-soft); color: var(--accent);
+    font-size: 13px; font-weight: 500; padding: 3px 12px; border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .card .spacer { height: 41px; margin-bottom: 0; }
+  @media (max-width: 720px) { .card .spacer { display: none; } }
+  .card h3 { font-size: 18px; margin-bottom: 6px; }
+  .card .price { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 26px; margin-bottom: 12px; }
+  .card p { font-size: 15px; color: var(--ink-soft); }
+  .card .note { margin-top: auto; padding-top: 14px; font-size: 13.5px; color: var(--accent); font-weight: 500; }
+
+  .retainer-row {
+    margin-top: 20px; padding: 18px 22px;
+    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+    display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    font-size: 15px;
+  }
+  .retainer-row strong { font-weight: 500; }
+  .retainer-row span { color: var(--ink-soft); }
+
+  .how { padding: 24px 0 64px; }
+  .how h2 { font-size: 24px; margin-bottom: 24px; }
+  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
+  @media (max-width: 720px) { .steps { grid-template-columns: 1fr; gap: 20px; } }
+  .step h3 { font-size: 16px; margin-bottom: 6px; }
+  .step p { font-size: 15px; color: var(--ink-soft); }
+  .step .k { display: inline-block; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; color: var(--accent); margin-bottom: 8px; letter-spacing: 0.06em; }
+
+  .cta { background: var(--ink); color: #F4F3EF; padding: 52px 0; border-radius: 0; }
+  .cta .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
+  .cta h2 { font-size: 24px; margin-bottom: 6px; }
+  .cta p { color: #B9C2C7; font-size: 15px; max-width: 460px; }
+  .btn {
+    display: inline-block; background: var(--accent); color: #fff;
+    font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px;
+    padding: 13px 26px; border-radius: 8px; text-decoration: none; white-space: nowrap;
+  }
+  .btn:hover { background: #11594e; }
+
+  footer { padding: 28px 0 40px; font-size: 13.5px; color: var(--ink-soft); }
+  .footer-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <div class="header-row">
+    <span class="wordmark">Trefn</span>
+    <span class="say">say: trevn</span>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <h1>We put trefn on your operations</h1>
+    <p>Custom operations software for SME manufacturers - quoting, scheduling, and job tracking built around how your factory actually runs. Not a bloated system you bend your business to fit.</p>
+    <p class="meaning"><em>Rhoi trefn ar</em> - to put in order. It's what we do, so it's what we're called.</p>
+  </section>
+
+  <section class="ladder wrap" aria-label="Services and prices">
+    <div class="cards">
+      <div class="card start">
+        <span class="badge">Start here</span>
+        <h3>Operations review</h3>
+        <div class="price">£1,750</div>
+        <p>One focused day on site. You get a clear picture of where the manual work is, what it costs you, what to build first - and a fixed quote for building it.</p>
+        <div class="note">Fully credited against your first build</div>
+      </div>
+      <div class="card">
+        <div class="spacer"></div>
+        <h3>First module</h3>
+        <div class="price">£9,500</div>
+        <p>One module live on your real data in around four weeks - quoting, scheduling, or whichever the review flags first. Includes data import, training, and 30 days of aftercare.</p>
+      </div>
+      <div class="card">
+        <div class="spacer"></div>
+        <h3>Operations platform</h3>
+        <div class="price">from £38,000</div>
+        <p>The full system, delivered in phases: multiple modules, integrations, migration off the spreadsheets, and a clean handover. Agencies quote well into six figures for the same shape.</p>
+      </div>
+    </div>
+    <div class="retainer-row">
+      <strong>Support &amp; development retainer - from £1,400/month</strong>
+      <span>Reserved capacity for fixes and improvements after your build goes live.</span>
+    </div>
+  </section>
+
+  <section class="how wrap">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step">
+        <span class="k">FIRST</span>
+        <h3>We look before we quote</h3>
+        <p>Every build starts with a paid review, so the quote you get is fixed and grounded in your actual operation - never an estimate that grows.</p>
+      </div>
+      <div class="step">
+        <span class="k">THEN</span>
+        <h3>Fixed price, phased delivery</h3>
+        <p>You know the cost before we start. Larger builds are split into phases with milestones, so you see working software early and often.</p>
+      </div>
+      <div class="step">
+        <span class="k">ALWAYS</span>
+        <h3>Built to be handed over</h3>
+        <p>Your data, your system, documented and trained into your team. You're never locked in to keep it running.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <div>
+        <h2>Book an operations review</h2>
+        <p>One day on site, £1,750 fixed, credited in full if you go on to build. You keep the review document either way.</p>
+      </div>
+      <a class="btn" href="mailto:ross@trefnltd.com?subject=Operations%20review">Email ross@trefnltd.com</a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap">
+  <div class="footer-row">
+    <span>Trefn Ltd · England &amp; Wales</span>
+    <span>All prices exclude VAT</span>
+  </div>
+</footer>
+
+</body>
+</html>
