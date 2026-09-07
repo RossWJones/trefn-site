@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trefn demo - an operations system you can click</title>
+<meta name="description" content="A live, clickable demo of the patterns Trefn builds into every operations module. Sample data, nothing saved.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#26333B;--soft:#51616B;--paper:#FAF9F6;--card:#FFFFFF;--line:#E4E1DA;
+  --accent:#166A5D;--accent-dark:#11594E;--accent-soft:#EAF3F0;--lime:#9BD11B;
+  --red:#B3261E;--red-soft:#FDF4F3;--red-line:#F1C9C5;--amber:#B26A00;--amber-soft:#FFF3E0;
+  --radius:10px;
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:Inter,system-ui,sans-serif;font-size:14px;line-height:1.5;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:Archivo,system-ui,sans-serif;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+a{color:var(--accent)}
+button{font:inherit;color:inherit;cursor:pointer}
+input,select,textarea{font:inherit;color:inherit}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+
+/* header */
+.top{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;padding:10px 20px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.wordmark{font-family:Archivo,sans-serif;font-weight:600;font-size:18px;text-decoration:none;color:var(--ink)}
+.wordmark i{color:var(--lime);font-style:normal}
+.tag{font-size:12px;color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:6px;white-space:nowrap}
+.nav{display:flex;gap:2px;margin-left:8px;flex-wrap:wrap}
+.nav a{padding:6px 10px;border-radius:6px;color:var(--soft);text-decoration:none;font-size:13.5px}
+.nav a.on{background:var(--accent-soft);color:var(--accent);font-weight:500}
+.top .right{margin-left:auto;display:flex;gap:8px;align-items:center}
+.btn{padding:7px 12px;border-radius:8px;border:1px solid var(--line);background:var(--card);font-size:13px;white-space:nowrap}
+.btn:hover{border-color:#c9c5bb}
+.btn.p{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.p:hover{background:var(--accent-dark)}
+.btn.sm{padding:4px 9px;font-size:12px}
+.btn.danger{color:var(--red);border-color:var(--red-line)}
+.btn.on{background:var(--amber-soft);border-color:#E9C98C;color:var(--amber)}
+.btn.glow{box-shadow:0 0 0 4px rgba(155,209,27,.5)}
+.btn:disabled{opacity:.45;cursor:default}
+
+/* layout */
+.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;min-height:calc(100vh - 57px)}
+.layout.notour{grid-template-columns:minmax(0,1fr)}
+.main{padding:22px 24px 60px;min-width:0}
+.main h2{font-size:21px;margin-bottom:14px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.main h2 small{font-family:Inter;font-weight:400;font-size:13px;color:var(--soft)}
+.sub{font-size:13px;color:var(--soft);margin-bottom:14px;max-width:640px}
+.toolbar{display:flex;gap:8px;align-items:center;margin-bottom:12px;flex-wrap:wrap}
+.toolbar .sp{flex:1}
+
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;text-align:left;width:100%}
+.tile .n{font-family:Archivo;font-size:28px;font-weight:600;line-height:1.1}
+.tile .l{font-size:12px;color:var(--soft);margin-top:2px}
+.tile.bad .n{color:var(--red)}.tile.warn .n{color:var(--amber)}
+button.tile:hover{border-color:var(--accent)}
+
+/* tables */
+.tbl{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:560px}
+th{font-size:12px;text-align:left;color:var(--soft);padding:9px 12px;border-bottom:1px solid var(--line);font-weight:500;white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:middle}
+tbody tr:last-child td{border-bottom:0}
+tbody tr.row{cursor:pointer}
+tbody tr.row:hover td{background:#F6F5F1}
+tbody tr.sel td{background:var(--accent-soft)}
+.pill{display:inline-block;font-size:11.5px;padding:2px 8px;border-radius:10px;background:var(--accent-soft);color:var(--accent);white-space:nowrap}
+.pill.bad{background:var(--red-soft);color:var(--red)}
+.pill.warn{background:var(--amber-soft);color:var(--amber)}
+.pill.grey{background:#EEECE6;color:var(--soft)}
+.pill.done{background:#E4EFD3;color:#3E6B00}
+.muted{color:var(--soft)}
+h3.sec{font-size:13px;color:var(--soft);font-weight:500;margin:0 0 8px;font-family:Inter}
+
+/* drawer */
+.drawer{position:fixed;top:57px;right:0;bottom:0;width:min(480px,100%);background:var(--card);border-left:1px solid var(--line);box-shadow:-8px 0 24px rgba(0,0,0,.06);z-index:30;overflow:auto;padding:18px 20px 40px;transform:translateX(100%);transition:transform .18s ease}
+.drawer.open{transform:none}
+.drawer .head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:14px}
+.drawer .head h3{font-size:17px}
+.drawer .head small{display:block;color:var(--soft);font-size:12.5px;margin-top:2px}
+.x{border:0;background:none;font-size:20px;line-height:1;color:var(--soft);padding:2px 6px}
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;margin-bottom:14px}
+.field{display:flex;flex-direction:column;gap:3px}
+.field.full{grid-column:1/-1}
+.field label{font-size:11.5px;color:var(--soft)}
+.field input,.field select,.field textarea{padding:7px 9px;border:1px solid var(--line);border-radius:7px;background:#fff;width:100%}
+.field textarea{min-height:60px;resize:vertical}
+.saverow{display:flex;gap:8px;align-items:center;margin-bottom:16px}
+.saverow .msg{font-size:12.5px;color:var(--soft)}
+.card{border:1px solid var(--line);border-radius:var(--radius);padding:12px;margin-bottom:12px}
+.card h4{font-size:13px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+.clock{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:9px 11px;border:1px solid var(--line);border-radius:8px;margin-bottom:7px;background:#fff}
+.clock.late{border-color:var(--red-line);background:var(--red-soft)}
+.clock.held{border-color:#E9C98C;background:var(--amber-soft)}
+.clock.done{background:#F6F5F1}
+.clock .t{font-weight:500;font-size:13px}
+.clock .s{font-size:12px;color:var(--soft)}
+.clock .s.bad{color:var(--red);font-weight:500}
+.clock .s.warn{color:var(--amber);font-weight:500}
+.clock .acts{display:flex;gap:6px}
+.hist div{font-size:12.5px;padding:6px 0;border-top:1px dashed var(--line)}
+.hist div:first-child{border-top:0}
+.hist .who{color:var(--soft)}
+.hist code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:12px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.child{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px dashed var(--line);font-size:13px;gap:8px}
+.child:first-child{border-top:0}
+.quickadd{display:flex;gap:6px;margin-top:8px}
+.quickadd input{flex:1;padding:6px 9px;border:1px solid var(--line);border-radius:7px}
+.lines td input{width:80px;padding:4px 6px;border:1px solid var(--line);border-radius:5px;text-align:right}
+.lines td input.w{width:100%;text-align:left}
+
+/* load error */
+.err{border:1px solid var(--red-line);background:var(--red-soft);color:var(--red);padding:12px 14px;border-radius:var(--radius);display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.err b{font-weight:500}
+.err .btn{color:var(--ink)}
+
+/* planner */
+.gantt{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:12px;overflow:auto}
+.gantt svg{display:block;min-width:640px}
+.legend{display:flex;gap:16px;font-size:12px;color:var(--soft);margin-top:8px;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:12px;height:8px;border-radius:2px;margin-right:5px;vertical-align:middle;background:var(--accent)}
+.legend .b::before{background:#C9D3D8}
+.legend .l::before{background:var(--red)}
+.legend .p::before{background:var(--amber);width:8px;border-radius:50%}
+.legend .d::before{background:var(--ink);width:2px;height:12px}
+
+/* hub */
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);margin-bottom:14px;flex-wrap:wrap}
+.tabs button{border:0;background:none;padding:8px 12px;border-bottom:2px solid transparent;color:var(--soft);font-size:13.5px}
+.tabs button.on{color:var(--accent);border-color:var(--accent);font-weight:500}
+.tabs .pv{font-size:10.5px;background:var(--amber-soft);color:var(--amber);padding:1px 6px;border-radius:8px;margin-left:5px;vertical-align:1px}
+.preview{border:2px dashed #E9C98C;border-radius:var(--radius);padding:16px;background:#FFFCF5;position:relative}
+.preview::before{content:"Preview - not built yet";position:absolute;top:-10px;left:12px;background:#FFFCF5;padding:0 6px;font-size:11px;color:var(--amber);font-weight:500}
+.decide{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.opt{border:1px solid var(--line);border-radius:var(--radius);padding:12px;background:#fff;cursor:pointer}
+.opt.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.opt h4{font-size:13.5px;margin-bottom:4px}
+.opt p{font-size:12.5px;color:var(--soft)}
+.mock{opacity:.7;pointer-events:none;font-size:12.5px}
+.mock .bar{height:8px;background:#DCE5E2;border-radius:4px;margin:6px 0}
+
+/* tour */
+.tour{background:var(--card);border-left:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:12px;position:sticky;top:57px;height:calc(100vh - 57px);overflow:auto}
+.tour .step{font-size:12px;color:var(--soft);display:flex;justify-content:space-between}
+.tour .dots{display:flex;gap:5px}
+.tour .dots span{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.tour .dots span.on{background:var(--accent)}
+.tour .dots span.did{background:var(--lime)}
+.tour h3{font-size:17px}
+.tour p{color:var(--soft);font-size:13.5px}
+.tour .try{background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 12px;border-radius:0 8px 8px 0;font-size:13.5px}
+.tour .try.did{background:#EEF7DA;border-color:var(--lime)}
+.tour .btns{display:flex;gap:8px;margin-top:auto}
+.tour .cta{font-size:12.5px;color:var(--soft);border-top:1px solid var(--line);padding-top:12px}
+.tour .end{background:var(--ink);color:#F4F3EF;padding:16px;border-radius:var(--radius)}
+.tour .end p{color:#B9C2C7}
+.tour .end a{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;padding:9px 14px;border-radius:8px;text-decoration:none;font-size:13.5px}
+.tourfab{display:none;position:fixed;right:16px;bottom:16px;z-index:25;box-shadow:0 4px 14px rgba(0,0,0,.15)}
+.notour .tourfab{display:inline-block}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#F4F3EF;padding:9px 14px;border-radius:8px;font-size:13px;z-index:40;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.show{opacity:1}
+.empty{padding:24px;text-align:center;color:var(--soft);font-size:13px}
+.about{max-width:640px}
+.about p{margin-bottom:12px;color:var(--soft)}
+.about ul{margin:0 0 12px 18px;color:var(--soft)}
+
+@media (max-width:900px){
+  .layout{grid-template-columns:1fr}
+  .tour{position:fixed;left:0;right:0;bottom:0;top:auto;height:auto;max-height:52vh;z-index:35;border-left:0;border-top:1px solid var(--line);border-radius:14px 14px 0 0;box-shadow:0 -8px 24px rgba(0,0,0,.12);padding:14px 16px 18px;gap:8px}
+  .tour h3{font-size:15px}.tour p{font-size:13px}.tour .try{font-size:13px}.tour .cta{display:none}
+  .top{padding:8px 12px}.tag{display:none}.nav{order:3;width:100%;margin:0;overflow-x:auto;flex-wrap:nowrap}.nav a{white-space:nowrap}.top .right{margin-left:auto}
+  .main{padding:16px 14px 60vh}.drawer{top:0}
+  .tour.hide{display:none}
+  .tourfab{display:inline-block}
+  .fields{grid-template-columns:1fr}
+  .decide{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){.drawer{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="wordmark" href="https://trefnltd.com">trefn<i>.</i></a>
+  <span class="tag">Demo - sample data, nothing is saved</span>
+  <nav class="nav" id="nav"></nav>
+  <div class="right">
+    <button class="btn sm" id="chaosBtn" title="Simulate a data source failing">Simulate a failure</button>
+    <button class="btn sm" id="resetBtn">Reset</button>
+  </div>
+</header>
+
+<div class="layout" id="layout">
+  <main class="main" id="main"></main>
+  <aside class="tour" id="tour"></aside>
+</div>
+<button class="btn p tourfab" id="tourFab">Show tour</button>
+
+<div class="drawer" id="drawer"></div>
+<div class="toast" id="toast"></div>
+
+<script>
+/* =========================================================
+   Trefn demo. Single file, in-memory data, resets on reload.
+   Patterns shown: derived numbers, SLA clocks with holds,
+   diff-at-save history, parent/child records, planner with
+   dependencies/baseline/deadlines, fail-loud loads, decisions.
+   ========================================================= */
+'use strict';
+
+/* ---------- time helpers (working days) ---------- */
+const H = 3600e3, D = 24*H;
+const BANK = new Set(['2026-12-25','2026-12-28','2027-01-01','2027-04-02','2027-04-05','2027-05-03','2027-05-31','2027-08-30','2027-12-27','2027-12-28']);
+const iso = d => d.toISOString().slice(0,10);
+const isWorking = d => { const w=d.getDay(); return w!==0 && w!==6 && !BANK.has(iso(d)); };
+function addWorkingDays(from, n){ const d=new Date(from); let step=n>=0?1:-1, left=Math.abs(n); while(left>0){ d.setDate(d.getDate()+step); if(isWorking(d)) left--; } return d; }
+function addWorkingMs(from, ms){ // ms of working time, 24h per working day
+  const days=Math.floor(ms/D), rem=ms-days*D; let d=addWorkingDays(from, days); d=new Date(d.getTime()+rem); while(!isWorking(d)) d=new Date(d.getTime()+D); return d; }
+function workingMsBetween(a,b){ // working ms from a to b (b>=a)
+  if(b<=a) return 0; let ms=0, cur=new Date(a);
+  while(cur<b){ const dayEnd=new Date(cur); dayEnd.setHours(24,0,0,0); const seg=new Date(Math.min(dayEnd,b)); if(isWorking(cur)) ms+=seg-cur; cur=seg; }
+  return ms; }
+function fmtDur(ms){ const s=Math.abs(ms); const d=Math.floor(s/D), h=Math.floor((s%D)/H), m=Math.floor((s%H)/6e4); if(d>0) return d+'d '+h+'h'; if(h>0) return h+'h '+m+'m'; return m+'m'; }
+const fmtDate = d => d.toLocaleDateString('en-GB',{day:'numeric',month:'short'});
+const fmtDT = d => d.toLocaleDateString('en-GB',{day:'numeric',month:'short'})+' '+d.toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'});
+const money = n => '£'+n.toLocaleString('en-GB',{minimumFractionDigits:2,maximumFractionDigits:2});
+const esc = s => String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ME = 'You (demo)';
+
+/* ---------- data ---------- */
+let DB, tour, chaos=false, failed={};
+const COMPLAINT_CLOCKS = [{key:'ack',label:'Acknowledge',days:1},{key:'resolve',label:'Resolve',days:10}];
+
+function seed(){
+  const now=new Date();
+  // due = now + offset (working ms); start = due - limit working days
+  const clock=(days,offsetMs,opts={})=>{ const due=addWorkingMs(now,offsetMs); let start=addWorkingDays(due,-days); return Object.assign({days,startedAt:start,stoppedAt:null,stoppedBy:null,holds:[]},opts); };
+  const c=(ref,customer,summary,status,owner,ack,resolve,created)=>({ref,customer,summary,status,owner,clocks:{ack,resolve},createdAt:created});
+  const office=d=>{ const x=new Date(d); x.setHours(9+(x.getDate()%7),(x.getDate()*7)%60,0,0); return x; };
+  const ago=(ms)=>office(new Date(now-ms));
+  DB={
+    complaints:[
+      c('CMP-0145','Northgate Supplies','Delivery short by two cartons','Open','A. Patel', clock(1,-2*H,{stoppedAt:ago(20*H),stoppedBy:'A. Patel'}), clock(10,6*H), ago(9.5*D)),
+      c('CMP-0142','Harlow Foods','Labels printed with wrong batch date','Open','A. Patel', clock(1,-(D+4*H)), clock(10,7*D), ago(2.2*D)),
+      c('CMP-0139','Brightwater Ltd','Invoice does not match PO','Investigating','J. Okafor', clock(1,-11*D,{stoppedAt:ago(11.5*D),stoppedBy:'J. Okafor'}), clock(10,-2*D), ago(12.5*D)),
+      c('CMP-0144','Fenwick & Co','Damaged outer packaging on arrival','Investigating','S. Reid', clock(1,-3*D,{stoppedAt:ago(3*D),stoppedBy:'S. Reid'}), clock(10,4*D), ago(6*D)),
+      c('CMP-0143','Alder Engineering','Wrong colour variant sent','Open','J. Okafor', clock(1,-2*D,{stoppedAt:ago(2*D+2*H),stoppedBy:'J. Okafor'}), clock(10,5*D,{holds:[{from:ago(2*D),to:null,reason:'Waiting on customer photos',by:'J. Okafor'}]}), ago(5*D)),
+      c('CMP-0141','Penrose Retail','Late delivery, no notice given','Closed','S. Reid', clock(1,-15*D,{stoppedAt:ago(15*D),stoppedBy:'S. Reid'}), clock(10,-3*D,{stoppedAt:ago(4*D),stoppedBy:'S. Reid'}), ago(16*D)),
+      c('CMP-0140','Marsh & Daughters','Missing certificate of conformity','Closed','A. Patel', clock(1,-16*D,{stoppedAt:ago(16*D),stoppedBy:'A. Patel'}), clock(10,-5*D,{stoppedAt:ago(6*D),stoppedBy:'A. Patel'}), ago(17*D)),
+    ],
+    actions:[
+      {ref:'ACT-0031',parent:'CMP-0139',title:'Reissue invoice against PO 4471',owner:'Finance',status:'Open',due:addWorkingDays(now,2)},
+      {ref:'ACT-0030',parent:'CMP-0144',title:'Raise packaging spec with supplier',owner:'S. Reid',status:'Open',due:addWorkingDays(now,5)},
+      {ref:'ACT-0029',parent:'CMP-0141',title:'Add dispatch notification step',owner:'Ops',status:'Done',due:ago(5*D)},
+    ],
+    quotes:[
+      {ref:'QTE-2043',customer:'Northgate Supplies',status:'Draft',lines:[{item:'Custom bracket, 40mm',qty:120,price:6.40},{item:'Fixing kit',qty:120,price:1.15}],createdAt:ago(1*D)},
+      {ref:'QTE-2042',customer:'Harlow Foods',status:'Approved',lines:[{item:'Printed label, 4-colour',qty:5000,price:0.12},{item:'Setup',qty:1,price:85}],createdAt:ago(3*D)},
+      {ref:'QTE-2041',customer:'Fenwick & Co',status:'Draft',lines:[{item:'Outer carton, double wall',qty:400,price:1.90}],createdAt:ago(4*D)},
+      {ref:'QTE-1877',customer:'Alder Engineering',status:'Approved',lines:[{item:'Legacy - imported from spreadsheet',qty:1,price:1240}],createdAt:ago(200*D),legacy:true},
+    ],
+    plan:{ start:addWorkingDays(now,1), baseline:null, shift:0,
+      tasks:[
+        {id:'t1',name:'Confirm requirements',dur:2,deps:[]},
+        {id:'t2',name:'Design and sign-off',dur:3,deps:['t1']},
+        {id:'t3',name:'Order materials',dur:1,deps:['t1'],pin:addWorkingDays(now,5)},
+        {id:'t4',name:'Materials lead time',dur:5,deps:['t3']},
+        {id:'t5',name:'Build',dur:4,deps:['t2','t4']},
+        {id:'t6',name:'Inspect and pack',dur:1,deps:['t5']},
+        {id:'t7',name:'Deliver',dur:1,deps:['t6'],deadline:addWorkingDays(now,17)},
+      ]},
+    decisions:[],
+    history:[
+      {at:ago(20*H),who:'S. Reid',rec:'CMP-0142',text:'Status: <code>New → Open</code>'},
+      {at:ago(2.2*D),who:'System',rec:'CMP-0142',text:'Created from email'},
+      {at:ago(1*D),who:'J. Okafor',rec:'CMP-0139',text:'Status: <code>Open → Investigating</code>'},
+      {at:ago(2*D),who:'J. Okafor',rec:'CMP-0143',text:'Hold on Resolve: <code>Waiting on customer photos</code>'},
+      {at:ago(3*D),who:'A. Patel',rec:'QTE-2042',text:'Status: <code>Draft → Approved</code>'},
+    ],
+  };
+  failed={};
+}
+const log=(rec,text,who=ME)=>DB.history.unshift({at:new Date(),who,rec,text});
+
+/* ---------- clocks ---------- */
+function clockState(cl){
+  const now=new Date();
+  const openHold=cl.holds.find(h=>!h.to);
+  const heldMs=cl.holds.reduce((s,h)=>s+workingMsBetween(h.from,h.to||now),0);
+  const due=addWorkingMs(cl.startedAt, cl.days*D + heldMs);
+  if(cl.stoppedAt) return {state:'done',due,text:'Stopped '+fmtDT(cl.stoppedAt)+' by '+cl.stoppedBy};
+  if(openHold) return {state:'held',due,text:'On hold - '+openHold.reason};
+  const left=due-now;
+  if(left<0){ const wl=workingMsBetween(due,now); return {state:'late',due,left:-wl,text:fmtDur(wl)+' late'}; }
+  if(left<24*H) return {state:'soon',due,left,text:'due in '+fmtDur(workingMsBetween(now,due))};
+  return {state:'ok',due,left,text:Math.round(workingMsBetween(now,due)/D*10)/10+' wd left'};
+}
+function chase(){
+  const rows=[];
+  for(const c of DB.complaints) for(const k of COMPLAINT_CLOCKS){ const s=clockState(c.clocks[k.key]); if(s.state==='late'||s.state==='soon') rows.push({c,clock:k,s}); }
+  rows.sort((a,b)=>(a.s.state===b.s.state?a.s.left-b.s.left:a.s.state==='late'?-1:1));
+  return rows;
+}
+
+/* ---------- numbering (derived from data) ---------- */
+function nextRef(list,prefix){ let max=0; for(const r of list){ const m=r.ref.match(new RegExp('^'+prefix+'-(\\d+)$')); if(m) max=Math.max(max,+m[1]); } return prefix+'-'+String(max+1).padStart(4,'0'); }
+
+/* ---------- planner ---------- */
+function schedule(plan){
+  const out={}, byId=Object.fromEntries(plan.tasks.map(t=>[t.id,t]));
+  const base=addWorkingDays(plan.start, plan.shift);
+  const visit=id=>{ if(out[id]) return out[id]; const t=byId[id]; let start=base, conflict=false;
+    for(const d of t.deps){ const f=visit(d).finish; const s=addWorkingDays(f,1); if(s>start) start=s; }
+    if(t.pin){ const pin=addWorkingDays(t.pin,plan.shift); if(pin>start) start=pin; else if(pin<start) conflict=true; }
+    const finish=addWorkingDays(start,t.dur-1);
+    const late=t.deadline? finish>addWorkingDays(t.deadline,plan.shift):false;
+    return out[id]={start,finish,conflict,late}; };
+  plan.tasks.forEach(t=>visit(t.id));
+  return out;
+}
+
+/* ---------- fail-loud loads ---------- */
+function load(key, fn){ // chaos: first attempt of each panel fails, retry succeeds
+  if(chaos && !failed[key]){ failed[key]=true; return {ok:false}; }
+  return {ok:true,data:fn()}; }
+const errBox=(key,what)=>`<div class="err"><span><b>Couldn't load</b> ${what}. <span class="muted" style="color:var(--red)">The data source did not respond.</span></span><button class="btn sm" onclick="retry('${key}')">Try again</button></div>`;
+function retry(key){ mark('chaos'); render(); }
+
+/* ---------- routing ---------- */
+const ROUTES=[['dashboard','Dashboard'],['complaints','Complaints'],['quotes','Quotes'],['planner','Planner'],['hub','Quality hub'],['about','How this was built']];
+function route(){ const h=location.hash.replace('#','')||'dashboard'; const [view,id]=h.split('/'); return {view:ROUTES.some(r=>r[0]===view)?view:(view==='actions'?'actions':'dashboard'),id}; }
+function go(h){ location.hash=h; }
+const curHash=()=>location.hash||'#dashboard';
+window.addEventListener('hashchange',()=>{ closeDrawer(); render(); });
+
+/* ---------- views ---------- */
+const $=id=>document.getElementById(id);
+function render(){
+  const r=route();
+  $('nav').innerHTML=ROUTES.map(([k,l])=>`<a href="#${k}" class="${r.view===k?'on':''}">${l}</a>`).join('');
+  $('chaosBtn').className='btn sm'+(chaos?' on':'');
+  $('chaosBtn').textContent=chaos?'Failure mode on - click to turn off':'Simulate a failure';
+  const V={dashboard,complaints,quotes,planner,hub,about,actions}[r.view];
+  $('main').innerHTML=V(r.id);
+  if(r.id && (r.view==='complaints'||r.view==='quotes'||r.view==='actions')) openRecord(r.view,r.id);
+  renderTour();
+}
+
+function dashboard(){
+  const now=new Date();
+  const tiles=load('tiles',()=>{ const rows=chase(); return {late:rows.filter(x=>x.s.state==='late').length,soon:rows.filter(x=>x.s.state==='soon').length,open:DB.complaints.filter(c=>c.status!=='Closed').length,held:DB.complaints.filter(c=>Object.values(c.clocks).some(k=>k.holds.some(h=>!h.to))).length,q:DB.quotes.filter(q=>q.status==='Draft').length}; });
+  const list=load('chase',()=>chase());
+  const mine=load('mine',()=>DB.actions.filter(a=>a.status!=='Done'));
+  let h=`<h2>Dashboard <small>${now.toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'})}</small></h2>`;
+  h+=tiles.ok?`<div class="tiles">
+    <button class="tile ${tiles.data.late?'bad':''}" onclick="go('#complaints')"><div class="n num">${tiles.data.late}</div><div class="l">SLA breaches</div></button>
+    <button class="tile ${tiles.data.soon?'warn':''}" onclick="go('#complaints')"><div class="n num">${tiles.data.soon}</div><div class="l">Due within 24h</div></button>
+    <button class="tile" onclick="go('#complaints')"><div class="n num">${tiles.data.open}</div><div class="l">Open complaints</div></button>
+    <button class="tile" onclick="go('#complaints')"><div class="n num">${tiles.data.held}</div><div class="l">On hold</div></button>
+    <button class="tile" onclick="go('#quotes')"><div class="n num">${tiles.data.q}</div><div class="l">Quotes in draft</div></button>
+  </div>`:`<div style="margin-bottom:16px">${errBox('tiles','the dashboard tiles')}</div>`;
+  h+=`<h3 class="sec">Chase list - breached first, then due within 24 hours</h3>`;
+  if(!list.ok) h+=errBox('chase','the chase list');
+  else if(!list.data.length) h+=`<div class="tbl"><div class="empty">Nothing breached and nothing due today.</div></div>`;
+  else h+=`<div class="tbl"><table><thead><tr><th>Ref</th><th>Customer</th><th>Clock</th><th>Status</th><th>Owner</th></tr></thead><tbody>`+
+    list.data.map(x=>`<tr class="row" onclick="go('#complaints/${x.c.ref}')"><td>${x.c.ref}</td><td>${esc(x.c.customer)}</td><td><span class="pill ${x.s.state==='late'?'bad':'warn'}">${x.clock.label} - ${x.s.text}</span></td><td>${x.c.status}</td><td>${esc(x.c.owner)}</td></tr>`).join('')+`</tbody></table></div>`;
+  h+=`<h3 class="sec" style="margin-top:20px">Open actions</h3>`;
+  h+=mine.ok?`<div class="tbl"><table><thead><tr><th>Ref</th><th>Action</th><th>Under</th><th>Owner</th><th>Due</th></tr></thead><tbody>`+mine.data.map(a=>`<tr class="row" onclick="go('#actions/${a.ref}')"><td>${a.ref}</td><td>${esc(a.title)}</td><td>${a.parent}</td><td>${esc(a.owner)}</td><td class="num">${fmtDate(a.due)}</td></tr>`).join('')+`</tbody></table></div>`:errBox('mine','open actions');
+  return h;
+}
+
+function complaints(){
+  const rows=load('complaints',()=>DB.complaints);
+  let h=`<h2>Complaints <small>${DB.complaints.length} records</small></h2>
+  <div class="toolbar"><button class="btn p" onclick="newComplaint()">+ New complaint</button><span class="sp"></span><button class="btn" onclick="exportCsv('complaints')">⬇ Export</button></div>`;
+  if(!rows.ok) return h+errBox('complaints','the complaints register');
+  const sel=route().id;
+  h+=`<div class="tbl"><table><thead><tr><th>Ref</th><th>Customer</th><th>Summary</th><th>Status</th><th>Acknowledge</th><th>Resolve</th><th>Owner</th></tr></thead><tbody>`;
+  for(const c of rows.data){ const a=clockState(c.clocks.ack), r=clockState(c.clocks.resolve);
+    h+=`<tr class="row ${sel===c.ref?'sel':''}" onclick="go('#complaints/${c.ref}')"><td>${c.ref}</td><td>${esc(c.customer)}</td><td>${esc(c.summary)}</td><td><span class="pill ${c.status==='Closed'?'grey':''}">${c.status}</span></td><td>${pillFor(a)}</td><td>${pillFor(r)}</td><td>${esc(c.owner)}</td></tr>`; }
+  return h+`</tbody></table></div>`;
+}
+const pillFor=s=>`<span class="pill ${ {late:'bad',soon:'warn',held:'warn',done:'done',ok:''}[s.state] }">${s.state==='done'?'Stopped':s.state==='held'?'On hold':s.text}</span>`;
+
+function quotes(){
+  const rows=load('quotes',()=>DB.quotes);
+  let h=`<h2>Quotes <small>next number: ${nextRef(DB.quotes,'QTE')}</small></h2>
+  <div class="toolbar"><button class="btn p" id="newQuoteBtn" onclick="newQuote()">+ New quote</button><span class="sp"></span><button class="btn" onclick="exportCsv('quotes')">⬇ Export</button></div>`;
+  if(!rows.ok) return h+errBox('quotes','the quotes register');
+  const sel=route().id;
+  h+=`<div class="tbl"><table><thead><tr><th>Ref</th><th>Customer</th><th>Lines</th><th>Total</th><th>Status</th><th>Created</th></tr></thead><tbody>`;
+  for(const q of rows.data){ h+=`<tr class="row ${sel===q.ref?'sel':''}" onclick="go('#quotes/${q.ref}')"><td>${q.ref}${q.legacy?' <span class="pill grey">imported</span>':''}</td><td>${esc(q.customer)}</td><td>${q.lines.length}</td><td class="num">${money(total(q))}</td><td><span class="pill ${q.status==='Approved'?'done':'grey'}">${q.status}</span></td><td class="num">${fmtDate(q.createdAt)}</td></tr>`; }
+  return h+`</tbody></table></div>`;
+}
+const total=q=>q.lines.reduce((s,l)=>s+l.qty*l.price,0);
+
+function planner(){
+  const p=DB.plan, s=schedule(p);
+  let h=`<h2>Planner <small>one job, seven steps, working days</small></h2>
+  <div class="toolbar">
+    <button class="btn" onclick="shiftPlan(-1)">Shift -1 day</button><button class="btn" onclick="shiftPlan(1)">Shift +1 day</button>
+    <button class="btn" id="baseBtn" onclick="snapshot()">${p.baseline?'Re-snapshot baseline':'Snapshot baseline'}</button>
+    <span class="sp"></span><span class="muted" style="font-size:12.5px">${p.shift?`Plan shifted ${p.shift>0?'+':''}${p.shift} wd from baseline`:'Bank holidays and weekends skipped automatically'}</span>
+  </div>`;
+  // gantt
+  const all=Object.values(s), min=new Date(Math.min(...all.map(x=>x.start),...(p.baseline?Object.values(p.baseline).map(x=>x.start):[]))), max=new Date(Math.max(...all.map(x=>x.finish),...(p.baseline?Object.values(p.baseline).map(x=>x.finish):[]),...p.tasks.filter(t=>t.deadline).map(t=>addWorkingDays(t.deadline,p.shift))));
+  const d0=new Date(min); d0.setDate(d0.getDate()-1); const d1=new Date(max); d1.setDate(d1.getDate()+2);
+  const days=Math.round((d1-d0)/D)+1, L=200, W=900, rowH=30, top=28, pw=(W-L-10)/days;
+  const x=d=>L+((d-d0)/D)*pw;
+  let g=`<svg viewBox="0 0 ${W} ${top+p.tasks.length*rowH+10}" style="width:100%;height:auto" font-family="Inter,system-ui" font-size="11">`;
+  for(let i=0;i<days;i++){ const d=new Date(d0.getTime()+i*D); const wk=!isWorking(d);
+    g+=`<rect x="${L+i*pw}" y="${top-6}" width="${pw}" height="${p.tasks.length*rowH+6}" fill="${wk?'#F1EFE9':'none'}"/>`;
+    if(i%2===0) g+=`<text x="${L+i*pw+pw/2}" y="${top-12}" text-anchor="middle" fill="#51616B">${d.getDate()}</text>`; }
+  p.tasks.forEach((t,i)=>{ const y=top+i*rowH, r=s[t.id];
+    g+=`<text x="8" y="${y+15}" fill="#26333B" font-size="12">${esc(t.name)}</text>`;
+    if(p.baseline&&p.baseline[t.id]){ const b=p.baseline[t.id]; g+=`<rect x="${x(b.start)}" y="${y+16}" width="${Math.max(2,x(b.finish)+pw-x(b.start))}" height="5" rx="2" fill="#C9D3D8"/>`; }
+    g+=`<rect x="${x(r.start)}" y="${y+3}" width="${Math.max(2,x(r.finish)+pw-x(r.start))}" height="12" rx="3" fill="${r.late?'#B3261E':'#166A5D'}"/>`;
+    if(t.pin) g+=`<circle cx="${x(addWorkingDays(t.pin,p.shift))+pw/2}" cy="${y+9}" r="4" fill="${r.conflict?'#B3261E':'#B26A00'}"/>`;
+    if(t.deadline){ const dl=x(addWorkingDays(t.deadline,p.shift))+pw; g+=`<line x1="${dl}" x2="${dl}" y1="${y-2}" y2="${y+22}" stroke="#26333B" stroke-width="2"/>`; }
+  });
+  g+=`</svg>`;
+  h+=`<div class="gantt">${g}<div class="legend"><span>Planned</span><span class="b">Baseline</span><span class="l">Late against deadline</span><span class="p">Pinned start</span><span class="d">Deadline</span></div></div>`;
+  h+=`<div class="tbl" style="margin-top:14px"><table><thead><tr><th>Step</th><th>Depends on</th><th>Days</th><th>Start</th><th>Finish</th><th>Float / slip</th><th></th></tr></thead><tbody>`;
+  p.tasks.forEach(t=>{ const r=s[t.id]; let flag='';
+    if(r.late){ const dl=addWorkingDays(t.deadline,p.shift); flag=`<span class="pill bad">Late by ${Math.round(workingMsBetween(dl,r.finish)/D)} wd</span>`; }
+    else if(t.deadline){ const dl=addWorkingDays(t.deadline,p.shift); flag=`<span class="pill">${Math.round(workingMsBetween(r.finish,dl)/D)} wd float</span>`; }
+    if(r.conflict) flag+=` <span class="pill bad">Pin conflict</span>`;
+    let slip=''; if(p.baseline&&p.baseline[t.id]){ const d=Math.round((r.finish-p.baseline[t.id].finish)/D); slip=d?`<span class="pill ${d>0?'warn':'done'}">${d>0?'+':''}${d}d vs baseline</span>`:'<span class="muted">on baseline</span>'; }
+    h+=`<tr><td>${esc(t.name)}${t.pin?' <span class="muted">(pinned)</span>':''}</td><td class="muted">${t.deps.map(d=>p.tasks.find(x=>x.id===d).name).join(', ')||'-'}</td><td class="num">${t.dur}</td><td class="num">${fmtDate(r.start)}</td><td class="num">${fmtDate(r.finish)}</td><td>${flag} ${slip}</td><td><button class="btn sm" onclick="growTask('${t.id}')">+1 day</button></td></tr>`; });
+  return h+`</tbody></table></div>`;
+}
+function shiftPlan(n){ DB.plan.shift+=n; log('PLAN','Plan shifted <code>'+(n>0?'+':'')+n+' wd</code>'); mark('planner'); render(); }
+function snapshot(){ DB.plan.baseline=schedule(DB.plan); DB.plan.shift=0; DB.plan.tasks.forEach(t=>{ t.pin=t.pin?addWorkingDays(t.pin,0):t.pin; }); log('PLAN','Baseline snapshotted'); toast('Baseline saved - now shift the plan or grow a step to see slip'); render(); }
+function growTask(id){ const t=DB.plan.tasks.find(t=>t.id===id); t.dur+=1; log('PLAN','<code>'+esc(t.name)+'</code>: duration +1 wd'); mark('planner'); render(); }
+
+let hubTab='complaints', hubChoice=null;
+function hub(){
+  const tabs=[['complaints','Complaints',false],['scorecards','Supplier scorecards',true],['audits','Audit calendar',true]];
+  let h=`<h2>Quality hub <small>live screens next to labelled previews</small></h2>
+  <div class="tabs">${tabs.map(([k,l,pv])=>`<button class="${hubTab===k?'on':''}" onclick="hubTab='${k}';render()">${l}${pv?'<span class="pv">Preview</span>':''}</button>`).join('')}</div>`;
+  if(hubTab==='complaints'){ const rows=chase(); h+=`<p class="sub">This tab is live - it is the same complaints register you have already seen, filtered to what needs chasing.</p>`;
+    h+=rows.length?`<div class="tbl"><table><thead><tr><th>Ref</th><th>Customer</th><th>Clock</th><th>Owner</th></tr></thead><tbody>${rows.map(x=>`<tr class="row" onclick="go('#complaints/${x.c.ref}')"><td>${x.c.ref}</td><td>${esc(x.c.customer)}</td><td><span class="pill ${x.s.state==='late'?'bad':'warn'}">${x.clock.label} - ${x.s.text}</span></td><td>${esc(x.c.owner)}</td></tr>`).join('')}</tbody></table></div>`:`<div class="tbl"><div class="empty">Nothing to chase.</div></div>`; }
+  else if(hubTab==='scorecards'){
+    const dec=DB.decisions.find(d=>d.key==='scorecards');
+    h+=`<p class="sub">Two ways this could work. Pick one and press Decide - it records who chose what and when, and that becomes the spec. No 40-page document.</p>
+    <div class="decide">
+      <div class="opt ${(hubChoice||dec?.choice)==='league'?'on':''}" onclick="hubChoice='league';render()"><h4>A - League table</h4><p>One ranked list of suppliers by on-time and right-first-time. Simple to read, easy to compare.</p><div class="mock"><div class="bar" style="width:90%"></div><div class="bar" style="width:75%"></div><div class="bar" style="width:60%"></div><div class="bar" style="width:40%"></div></div></div>
+      <div class="opt ${(hubChoice||dec?.choice)==='cards'?'on':''}" onclick="hubChoice='cards';render()"><h4>B - Scorecards</h4><p>One page per supplier with trend, open issues and the last three audits. More detail, more clicks.</p><div class="mock" style="display:grid;grid-template-columns:1fr 1fr;gap:6px"><div class="bar" style="height:28px"></div><div class="bar" style="height:28px"></div><div class="bar" style="height:28px"></div><div class="bar" style="height:28px"></div></div></div>
+    </div>
+    <div class="preview"><div class="saverow" style="margin:0"><button class="btn p" id="decideBtn" onclick="decide()" ${!hubChoice||hubChoice===dec?.choice?'disabled':''}>Decide</button><span class="msg">${dec?`Decided: <b>${dec.choice==='league'?'League table':'Scorecards'}</b> - ${esc(dec.who)}, ${fmtDT(dec.at)}`:'No decision recorded yet'}</span></div></div>`; }
+  else { h+=`<p class="sub">A preview tab is an inert mock-up next to the live screens - it shows what is coming so nobody has to imagine it.</p><div class="preview"><div class="mock"><p>Audit calendar - month view with internal and supplier audits, owners and overdue markers.</p>${[95,70,85,50,65].map(w=>`<div class="bar" style="width:${w}%"></div>`).join('')}</div></div>`; }
+  return h;
+}
+function decide(){ const i=DB.decisions.findIndex(d=>d.key==='scorecards'); const rec={key:'scorecards',choice:hubChoice,who:ME,at:new Date()}; if(i>=0) DB.decisions[i]=rec; else DB.decisions.push(rec); log('HUB','Decision - supplier scorecards: <code>'+(hubChoice==='league'?'League table':'Scorecards')+'</code>'); mark('decide'); render(); }
+
+function actions(id){ // register view for actions (child records opened in their own register)
+  const sel=id;
+  let h=`<h2>Actions <small>${DB.actions.length} records - each one lives under a complaint</small></h2>`;
+  h+=`<div class="tbl"><table><thead><tr><th>Ref</th><th>Action</th><th>Under</th><th>Owner</th><th>Status</th><th>Due</th></tr></thead><tbody>`+DB.actions.map(a=>`<tr class="row ${sel===a.ref?'sel':''}" onclick="go('#actions/${a.ref}')"><td>${a.ref}</td><td>${esc(a.title)}</td><td><a href="#complaints/${a.parent}" onclick="event.stopPropagation()">${a.parent}</a></td><td>${esc(a.owner)}</td><td><span class="pill ${a.status==='Done'?'done':''}">${a.status}</span></td><td class="num">${fmtDate(a.due)}</td></tr>`).join('')+`</tbody></table></div>`;
+  return h;
+}
+
+function about(){
+  return `<h2>How this was built</h2><div class="about">
+  <p>This page is one HTML file. There is no server, no login and no database - the sample data lives in your browser and disappears when you reload. It exists to show the patterns, not to be the product.</p>
+  <p>The systems Trefn builds run inside your own Microsoft 365, on Microsoft's business platform, so your data never leaves your tenant. The patterns are the same:</p>
+  <ul>
+    <li><b>Numbers derived from data</b> - the next reference is always the highest existing plus one, so imported records keep their old numbers.</li>
+    <li><b>SLA clocks in working days</b> - with holds that pause the clock when the delay is genuinely someone else's.</li>
+    <li><b>Diff-at-save history</b> - what changed, from what, to what, by whom. Saving with no change writes nothing.</li>
+    <li><b>Parent and child records</b> - follow-up actions are real records with their own owners and dates, not a text box.</li>
+    <li><b>A planner that understands dependencies</b> - move one step and the rest follow; pins, deadlines and a baseline to show slip.</li>
+    <li><b>Fail-loud loads</b> - when a data source breaks, the screen says so instead of showing an empty list.</li>
+    <li><b>Decisions recorded, not documented</b> - labelled previews next to live screens, decided with a button.</li>
+  </ul>
+  <p>A first module like the complaints or quotes register, live on your data, is around four weeks at a fixed price. The first step is an operations review.</p>
+  <p><a class="btn p" href="https://trefnltd.com" style="text-decoration:none">Back to trefnltd.com</a></p></div>`;
+}
+
+/* ---------- drawer (record view) ---------- */
+let open=null; // {type,ref}
+function openRecord(type,ref){ open={type,ref}; drawDrawer(); $('drawer').classList.add('open'); }
+function closeDrawer(){ open=null; $('drawer').classList.remove('open'); }
+function closeAndBack(){ const v=route().view; closeDrawer(); if(location.hash.includes('/')) history.replaceState(null,'','#'+v); render(); }
+function drawDrawer(){
+  if(!open) return; const d=$('drawer'); let h='';
+  if(open.type==='complaints'){ const c=DB.complaints.find(x=>x.ref===open.ref); if(!c) return closeDrawer();
+    h=`<div class="head"><div><h3>${c.ref} - ${esc(c.customer)}</h3><small>Created ${fmtDT(c.createdAt)}</small></div><button class="x" onclick="closeAndBack()" aria-label="Close">×</button></div>
+    <div class="fields">
+      <div class="field"><label>Status</label><select id="f_status">${['New','Open','Investigating','Closed'].map(s=>`<option ${c.status===s?'selected':''}>${s}</option>`).join('')}</select></div>
+      <div class="field"><label>Owner</label><select id="f_owner">${['A. Patel','J. Okafor','S. Reid','Unassigned'].map(s=>`<option ${c.owner===s?'selected':''}>${s}</option>`).join('')}</select></div>
+      <div class="field full"><label>Summary</label><textarea id="f_summary">${esc(c.summary)}</textarea></div>
+    </div>
+    <div class="saverow"><button class="btn p" onclick="saveComplaint('${c.ref}')">Save</button><span class="msg" id="saveMsg">Every save is compared to what was there before.</span></div>
+    <div class="card"><h4>Clocks <span class="muted" style="font-weight:400;font-size:12px">working days, not calendar days</span></h4>${COMPLAINT_CLOCKS.map(k=>clockHtml(c,k)).join('')}</div>
+    <div class="card"><h4>Actions <span class="muted" style="font-weight:400;font-size:12px">${DB.actions.filter(a=>a.parent===c.ref).length} under this complaint</span></h4>
+      ${DB.actions.filter(a=>a.parent===c.ref).map(a=>`<div class="child"><span><a href="#actions/${a.ref}">${a.ref}</a> ${esc(a.title)}</span><span class="pill ${a.status==='Done'?'done':''}">${a.status}</span></div>`).join('')||'<div class="muted" style="font-size:12.5px">None yet</div>'}
+      <div class="quickadd"><input id="qa_title" placeholder="Add a corrective action..." onkeydown="if(event.key==='Enter')quickAdd('${c.ref}')"><button class="btn" onclick="quickAdd('${c.ref}')">Add</button></div></div>
+    <div class="card"><h4>History</h4><div class="hist">${histFor(c.ref)}</div></div>`;
+  }
+  else if(open.type==='quotes'){ const q=DB.quotes.find(x=>x.ref===open.ref); if(!q) return closeDrawer();
+    h=`<div class="head"><div><h3>${q.ref} - ${esc(q.customer)}</h3><small>${q.legacy?'Imported - kept its original number':'Number derived from the register'} · Created ${fmtDate(q.createdAt)}</small></div><button class="x" onclick="closeAndBack()" aria-label="Close">×</button></div>
+    <div class="fields"><div class="field"><label>Status</label><select id="q_status">${['Draft','Approved','Declined'].map(s=>`<option ${q.status===s?'selected':''}>${s}</option>`).join('')}</select></div>
+    <div class="field"><label>Customer</label><input id="q_customer" value="${esc(q.customer)}"></div></div>
+    <div class="card"><h4>Lines</h4><div class="tbl" style="border:0"><table class="lines" style="min-width:0"><thead><tr><th>Item</th><th style="text-align:right">Qty</th><th style="text-align:right">Unit £</th><th style="text-align:right">Total</th></tr></thead><tbody>
+    ${q.lines.map((l,i)=>`<tr><td><input class="w" id="l_item_${i}" value="${esc(l.item)}"></td><td style="text-align:right"><input class="num" id="l_qty_${i}" value="${l.qty}"></td><td style="text-align:right"><input class="num" id="l_price_${i}" value="${l.price}"></td><td class="num" style="text-align:right">${money(l.qty*l.price)}</td></tr>`).join('')}
+    <tr><td colspan="3" style="text-align:right;color:var(--soft)">Total</td><td class="num" style="text-align:right"><b>${money(total(q))}</b></td></tr></tbody></table></div>
+    <div class="quickadd"><button class="btn sm" onclick="addLine('${q.ref}')">+ Line</button></div></div>
+    <div class="saverow"><button class="btn p" onclick="saveQuote('${q.ref}')">Save</button><span class="msg" id="saveMsg">Prices come from the record, not from memory.</span></div>
+    <div class="card"><h4>History</h4><div class="hist">${histFor(q.ref)}</div></div>`;
+  }
+  else if(open.type==='actions'){ const a=DB.actions.find(x=>x.ref===open.ref); if(!a) return closeDrawer();
+    h=`<div class="head"><div><h3>${a.ref}</h3><small>Under <a href="#complaints/${a.parent}">${a.parent}</a></small></div><button class="x" onclick="closeAndBack()" aria-label="Close">×</button></div>
+    <div class="fields"><div class="field full"><label>Action</label><input id="a_title" value="${esc(a.title)}"></div>
+    <div class="field"><label>Owner</label><input id="a_owner" value="${esc(a.owner)}"></div>
+    <div class="field"><label>Status</label><select id="a_status">${['Open','Done'].map(s=>`<option ${a.status===s?'selected':''}>${s}</option>`).join('')}</select></div></div>
+    <div class="saverow"><button class="btn p" onclick="saveAction('${a.ref}')">Save</button><span class="msg" id="saveMsg"></span></div>
+    <div class="card"><h4>History</h4><div class="hist">${histFor(a.ref)}</div></div>`;
+  }
+  d.innerHTML=h;
+}
+function histFor(ref){ const rows=DB.history.filter(h=>h.rec===ref); return rows.length?rows.map(h=>`<div><span class="who">${fmtDT(h.at)} - ${esc(h.who)}</span> · ${h.text}</div>`).join(''):'<div class="muted">Nothing yet</div>'; }
+function clockHtml(c,k){ const cl=c.clocks[k.key], s=clockState(cl);
+  const cls={late:'late',held:'held',done:'done'}[s.state]||'';
+  const openHold=cl.holds.find(h=>!h.to);
+  let acts='';
+  if(!cl.stoppedAt){ acts+=`<button class="btn sm p" onclick="stamp('${c.ref}','${k.key}')">Stamp</button>`; acts+=openHold?`<button class="btn sm" onclick="resume('${c.ref}','${k.key}')">Resume</button>`:`<button class="btn sm" onclick="hold('${c.ref}','${k.key}')">Hold</button>`; }
+  return `<div class="clock ${cls}"><div><div class="t">${k.label} <span class="muted" style="font-weight:400">- ${k.days} working day${k.days>1?'s':''}</span></div><div class="s ${s.state==='late'?'bad':s.state==='soon'?'warn':''}">${s.text}${s.state!=='done'?' · due '+fmtDT(s.due):''}</div></div><div class="acts">${acts}</div></div>`; }
+
+/* ---------- actions on records ---------- */
+function diffSave(ref, pairs){ // pairs: [label, old, new, apply]
+  const changed=pairs.filter(p=>String(p[1])!==String(p[2]));
+  if(!changed.length){ const m=$('saveMsg'); if(m) m.innerHTML='<b>No change - nothing written.</b> It does not log noise.'; mark('history-noop'); return false; }
+  changed.forEach(p=>{ p[3](); const show=v=>(v===''||v==null)?'-':v; log(ref, esc(p[0])+': <code>'+esc(show(p[1]))+' → '+esc(show(p[2]))+'</code>'); });
+  mark('history'); return true; }
+function saveComplaint(ref){ const c=DB.complaints.find(x=>x.ref===ref);
+  const st=$('f_status').value, ow=$('f_owner').value, su=$('f_summary').value;
+  if(diffSave(ref,[['Status',c.status,st,()=>c.status=st],['Owner',c.owner,ow,()=>c.owner=ow],['Summary',c.summary,su,()=>c.summary=su]])){ toast('Saved - see History'); render(); drawDrawer(); } }
+function saveQuote(ref){ const q=DB.quotes.find(x=>x.ref===ref); const pairs=[];
+  const st=$('q_status').value, cu=$('q_customer').value; pairs.push(['Status',q.status,st,()=>q.status=st],['Customer',q.customer,cu,()=>q.customer=cu]);
+  q.lines.forEach((l,i)=>{ const it=$('l_item_'+i).value, qty=+$('l_qty_'+i).value||0, pr=+$('l_price_'+i).value||0;
+    pairs.push(['Line '+(i+1)+' item',l.item,it,()=>l.item=it],['Line '+(i+1)+' qty',l.qty,qty,()=>l.qty=qty],['Line '+(i+1)+' unit price',l.price,pr,()=>l.price=pr]); });
+  if(diffSave(ref,pairs)){ toast('Saved - see History'); render(); drawDrawer(); } }
+function saveAction(ref){ const a=DB.actions.find(x=>x.ref===ref); const t=$('a_title').value, o=$('a_owner').value, s=$('a_status').value;
+  if(diffSave(ref,[['Action',a.title,t,()=>a.title=t],['Owner',a.owner,o,()=>a.owner=o],['Status',a.status,s,()=>a.status=s]])){ toast('Saved'); render(); drawDrawer(); } }
+function addLine(ref){ const q=DB.quotes.find(x=>x.ref===ref); q.lines.push({item:'New line',qty:1,price:0}); log(ref,'Line '+q.lines.length+' added'); drawDrawer(); }
+function stamp(ref,key){ const c=DB.complaints.find(x=>x.ref===ref); const cl=c.clocks[key]; const now=new Date();
+  const oh=cl.holds.find(h=>!h.to); if(oh) oh.to=now; cl.stoppedAt=now; cl.stoppedBy=ME;
+  log(ref, COMPLAINT_CLOCKS.find(k=>k.key===key).label+' clock stamped'); mark('stamp'); toast('Clock stopped - it has left the chase list'); render(); drawDrawer(); }
+function hold(ref,key){ const c=DB.complaints.find(x=>x.ref===ref); const reason=prompt('Why is this on hold? (e.g. waiting on customer photos)','Waiting on customer photos'); if(reason===null) return;
+  c.clocks[key].holds.push({from:new Date(),to:null,reason,by:ME}); log(ref,'Hold on '+COMPLAINT_CLOCKS.find(k=>k.key===key).label+': <code>'+esc(reason)+'</code>'); mark('hold'); toast('Clock paused - it cannot breach while held'); render(); drawDrawer(); }
+function resume(ref,key){ const c=DB.complaints.find(x=>x.ref===ref); const oh=c.clocks[key].holds.find(h=>!h.to); if(oh) oh.to=new Date(); log(ref,COMPLAINT_CLOCKS.find(k=>k.key===key).label+' clock resumed'); render(); drawDrawer(); }
+function quickAdd(ref){ const t=$('qa_title').value.trim(); if(!t) return; const a={ref:nextRef(DB.actions,'ACT'),parent:ref,title:t,owner:ME,status:'Open',due:addWorkingDays(new Date(),5)}; DB.actions.unshift(a); log(a.ref,'Created under '+ref); log(ref,'Action added: <code>'+a.ref+'</code>'); mark('child'); toast(a.ref+' created under '+ref); drawDrawer(); }
+function newComplaint(){ const now=new Date(); const c={ref:nextRef(DB.complaints,'CMP'),customer:'New customer',summary:'',status:'New',owner:'Unassigned',clocks:{ack:{days:1,startedAt:now,stoppedAt:null,stoppedBy:null,holds:[]},resolve:{days:10,startedAt:now,stoppedAt:null,stoppedBy:null,holds:[]}},createdAt:now}; DB.complaints.unshift(c); log(c.ref,'Created - clocks started'); go('#complaints/'+c.ref); }
+function newQuote(){ const q={ref:nextRef(DB.quotes,'QTE'),customer:'New customer',status:'Draft',lines:[{item:'New line',qty:1,price:0}],createdAt:new Date()}; DB.quotes.unshift(q); log(q.ref,'Created'); mark('number'); toast(q.ref+' - highest existing + 1'); go('#quotes/'+q.ref); }
+function exportCsv(which){ let rows; if(which==='complaints') rows=[['Ref','Customer','Summary','Status','Owner','Acknowledge due','Resolve due'],...DB.complaints.map(c=>[c.ref,c.customer,c.summary,c.status,c.owner,clockState(c.clocks.ack).due.toISOString(),clockState(c.clocks.resolve).due.toISOString()])];
+  else rows=[['Ref','Customer','Status','Lines','Total'],...DB.quotes.map(q=>[q.ref,q.customer,q.status,q.lines.length,total(q).toFixed(2)])];
+  const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');
+  try{ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='trefn-demo-'+which+'.csv'; a.click(); toast('Everything comes out - nobody is trapped in this system'); }catch(e){ toast('Export blocked by this browser'); } }
+
+/* ---------- tour ---------- */
+const STEPS=[
+ {key:'stamp',view:'#dashboard',title:'The number nobody updates',body:'Two things are late, one is due within the day. That figure is worked out from the records and their clocks - nobody keeps it up to date.',cta:'Click the top breached complaint, then press <b>Stamp</b> on its red clock. Watch it leave the chase list.'},
+ {key:'hold',view:'#complaints',title:'Working days, not calendar days',body:'A Friday-afternoon complaint is not late on Saturday. When a delay is genuinely the customer\'s, the clock can be held - it cannot breach while held, and it cannot be quietly forgotten either.',cta:'Open any complaint and press <b>Hold</b> on the Resolve clock. Give a reason.'},
+ {key:'history',view:'#complaints',title:'What changed, from what, to what',body:'Every save is compared with what was there before. You never get "someone changed something".',cta:'In an open complaint change the Status and press <b>Save</b>. Then press Save again without changing anything - nothing is written.'},
+ {key:'child',view:'#complaints',title:'Follow-ups are real records',body:'A complaint is rarely one thing. The actions under it have their own owners, dates and history - not a text box.',cta:'In an open complaint, type an action in the <b>Actions</b> box and press Add. Then click its reference to open it in its own register.'},
+ {key:'number',view:'#quotes',title:'Numbers come from the data',body:'The next reference is always the highest existing plus one. Imported records keep their old numbers - see QTE-1877 - and new ones carry on from the top.',cta:'Press <b>+ New quote</b> and check the number it gets.'},
+ {key:'planner',view:'#planner',title:'Move one step, the rest follow',body:'Steps depend on each other. Pins hold a start date; a deadline turns a step Late on its own; a baseline shows the gap between what you promised and where you are.',cta:'Press <b>Snapshot baseline</b>, then <b>Shift +1 day</b> twice or grow a step with <b>+1 day</b>. Watch Deliver turn red.'},
+ {key:'chaos',view:'#dashboard',title:'It tells you when it broke',body:'Most systems show an empty list when a data source fails and let you believe there is nothing to do. This one says so.',cta:'Press <b>Simulate a failure</b> in the header, then <b>Try again</b> on the panel that failed.'},
+ {key:'decide',view:'#hub',title:'Decisions recorded, not documented',body:'Things you have not decided yet appear as labelled previews next to the live screens. You decide by pressing a button; it records who chose what and when.',cta:'Open the <b>Supplier scorecards</b> preview tab, pick A or B, press <b>Decide</b>.'},
+];
+tour={i:0,done:{},hidden:false};
+function mark(k){ if(k==='history-noop') k='history'; if(!tour.done[k]){ tour.done[k]=true; renderTour(); } }
+function renderTour(){
+  const t=$('tour'); $('layout').classList.toggle('notour',tour.hidden); t.classList.toggle('hide',tour.hidden);
+  if(tour.hidden) return;
+  if(tour.i>=STEPS.length){ const n=Object.keys(tour.done).length;
+    t.innerHTML=`<div class="step"><span>Tour complete</span><span>${n} of ${STEPS.length} tried</span></div>
+    <h3>That was one module</h3><p>A complaints or quotes module like this, live on your data, is around four weeks at a fixed price. The first step is an operations review - one day of your time, on site or remote.</p>
+    <div class="end"><b>Want one of these on your data?</b><p>Book an operations review. If you go ahead with a build within 60 days, the review fee comes off the first invoice.</p><a href="https://trefnltd.com#contact">Talk to Trefn</a></div>
+    <p class="muted" style="font-size:12.5px">Keep clicking around - nothing is saved, and <b>Reset</b> puts it all back.</p>
+    <div class="btns"><button class="btn" onclick="tour.i=0;renderTour()">Start again</button><button class="btn" onclick="hideTour()">Close tour</button></div>`; return; }
+  const s=STEPS[tour.i], did=!!tour.done[s.key];
+  t.innerHTML=`<div class="step"><span>Tour - step ${tour.i+1} of ${STEPS.length}</span><button class="x" style="font-size:16px" onclick="hideTour()" title="Hide tour">×</button></div>
+  <div class="dots">${STEPS.map((x,i)=>`<span class="${i===tour.i?'on':tour.done[x.key]?'did':''}"></span>`).join('')}</div>
+  <h3>${s.title}</h3><p>${s.body}</p>
+  <div class="try ${did?'did':''}"><b>${did?'Done ✓':'Try it:'}</b> ${s.cta}</div>
+  ${curHash()!==s.view&&!curHash().startsWith(s.view+'/')?`<button class="btn sm" onclick="go('${s.view}')">Take me to the right screen</button>`:''}
+  <div class="btns"><button class="btn" ${tour.i===0?'disabled':''} onclick="tourStep(-1)">Back</button><button class="btn p" onclick="tourStep(1)">${did?'Next':'Next - or try it first'}</button></div>
+  <div class="cta">These are the patterns in every module Trefn builds. <a href="#about">How this was built</a></div>`;
+}
+function tourStep(n){ tour.i=Math.max(0,tour.i+n); if(tour.i<STEPS.length){ const v=STEPS[tour.i].view; if(curHash()!==v && !curHash().startsWith(v+'/')) { go(v); return; } } renderTour(); }
+function hideTour(){ tour.hidden=true; renderTour(); }
+$('tourFab').onclick=()=>{ tour.hidden=false; renderTour(); };
+
+/* ---------- misc ---------- */
+let toastT; function toast(m){ const t=$('toast'); t.textContent=m; t.classList.add('show'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('show'),2600); }
+$('chaosBtn').onclick=()=>{ chaos=!chaos; failed={}; if(chaos) toast('Failure mode on - the next load of each panel will fail once'); render(); };
+$('resetBtn').onclick=()=>{ seed(); chaos=false; hubChoice=null; closeDrawer(); toast('Sample data reset'); if(location.hash.includes('/')) history.replaceState(null,'','#'+route().view); render(); };
+document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&open) closeAndBack(); });
+
+seed(); render();
+</script>
+</body>
+</html>
