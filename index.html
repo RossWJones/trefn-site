@@ -94,6 +94,12 @@
     padding: 13px 26px; border-radius: 8px; text-decoration: none; white-space: nowrap;
   }
   .btn:hover { background: #11594e; }
+  .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+  .btn.ghost:hover { background: var(--accent-soft); }
+  .hero .demo { margin-top: 22px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .hero .demo span { font-size: 14.5px; color: var(--ink-soft); max-width: 420px; line-height: 1.45; }
+  .cta .demo-link { display: block; margin-top: 10px; font-size: 14px; color: #B9C2C7; }
+  .cta .demo-link a { color: #F4F3EF; }
 
   footer { padding: 28px 0 40px; font-size: 13.5px; color: var(--ink-soft); }
   .footer-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
@@ -114,6 +120,10 @@
     <p>Custom operations software for small and medium-sized businesses. Quoting, scheduling, job tracking, customer portals - whatever your team is currently holding together with spreadsheets, email and memory. Built around how you actually work, not a big system you have to bend your business to fit.</p>
     <p class="meaning"><em>Rhoi trefn ar</em> - to put in order. It's what we do, so it's what we're called.</p>
     <p class="who">Hello - I'm Ross. Trefn is me, a lot of hands-on experience running operations, and a habit of building the software I wished already existed. You'll deal with me from first chat to handover.</p>
+    <div class="demo">
+      <a class="btn ghost" href="demo/">See a live demo</a>
+      <span>One module, sample data, nothing to install. Click around and see what "built around how you work" actually means.</span>
+    </div>
   </section>
 
   <section class="ladder wrap" aria-label="Services and prices">
@@ -165,11 +175,12 @@
     </div>
   </section>
 
-  <section class="cta">
+  <section class="cta" id="contact">
     <div class="wrap">
       <div>
         <h2>Let's have a chat</h2>
         <p>Not sure whether a review is the right first step? Drop me an email and we'll work it out together. No pitch, no pressure - just a conversation about what's getting in your way.</p>
+        <span class="demo-link">Want to see it first? <a href="demo/">Try the demo</a> - five minutes, no sign-up.</span>
       </div>
       <a class="btn" href="mailto:ross@trefnltd.com?subject=Hello%20from%20the%20website">Email ross@trefnltd.com</a>
     </div>
