@@ -1,0 +1,8 @@
+# trefnltd.com
+# All crawlers are welcome, including search engines (Googlebot, Bingbot) and
+# AI search and assistant crawlers (OAI-SearchBot, ChatGPT-User, Claude-SearchBot,
+# Claude-User, PerplexityBot). The demo is kept out of results by its own noindex tag.
+User-agent: *
+Allow: /
+
+Sitemap: https://trefnltd.com/sitemap.xml
