@@ -8,18 +8,19 @@
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ctitle%3ETrefn%20app%20icon%3C/title%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23232A28%22/%3E%3Cg%20transform%3D%22translate%2815.157894736842106%2019.263157894736842%29%20scale%280.5263157894736842%29%22%3E%3Cg%20fill%3D%22%23E7E5DC%22%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2224%22%20y%3D%220%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%220%22%20y%3D%2224%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2248%22%20y%3D%2224%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%220%22%20y%3D%2248%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2224%22%20y%3D%2248%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2248%22%20y%3D%2248%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3C/g%3E%3Crect%20x%3D%2250%22%20y%3D%22-7%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22%20fill%3D%22%2352BD92%22%20transform%3D%22rotate%2812%2058%201%29%22/%3E%3C/g%3E%3C/svg%3E">
 <style>
 :root{
-  --ink:#26333B;--soft:#51616B;--paper:#FAF9F6;--card:#FFFFFF;--line:#E4E1DA;
-  --accent:#166A5D;--accent-dark:#11594E;--accent-soft:#EAF3F0;--lime:#9BD11B;
+  --ink:#232A28;--soft:#5A6360;--paper:#FBFAF6;--card:#FFFFFF;--line:#E2DFD6;
+  --accent:#1B6B4F;--accent-dark:#14523C;--accent-soft:#E6EFEA;--lime:#52BD92;
   --red:#B3261E;--red-soft:#FDF4F3;--red-line:#F1C9C5;--amber:#B26A00;--amber-soft:#FFF3E0;
   --radius:10px;
 }
 *{box-sizing:border-box;margin:0}
 html,body{height:100%}
 body{font-family:Inter,system-ui,sans-serif;font-size:14px;line-height:1.5;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
-h1,h2,h3,h4{font-family:Archivo,system-ui,sans-serif;font-weight:600;line-height:1.2;letter-spacing:-.01em}
+h1,h2,h3,h4{font-family:"Zilla Slab",Georgia,serif;font-weight:700;line-height:1.2;letter-spacing:-.01em}
 a{color:var(--accent)}
 button{font:inherit;color:inherit;cursor:pointer}
 input,select,textarea{font:inherit;color:inherit}
@@ -28,7 +29,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 
 /* header */
 .top{display:flex;align-items:center;gap:10px 14px;flex-wrap:wrap;padding:10px 20px;background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-.wordmark{font-family:Archivo,sans-serif;font-weight:600;font-size:18px;text-decoration:none;color:var(--ink)}
+.wordmark{text-decoration:none;display:block}
 .wordmark i{color:var(--lime);font-style:normal}
 .tag{font-size:12px;color:var(--accent);background:var(--accent-soft);padding:3px 9px;border-radius:6px;white-space:nowrap}
 .nav{display:flex;gap:2px;margin-left:8px;flex-wrap:wrap}
@@ -58,7 +59,7 @@ button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{ou
 /* tiles */
 .tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:20px}
 .tile{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;text-align:left;width:100%}
-.tile .n{font-family:Archivo;font-size:28px;font-weight:600;line-height:1.1}
+.tile .n{font-family:"Zilla Slab",Georgia,serif;font-size:30px;font-weight:700;line-height:1.1}
 .tile .l{font-size:12px;color:var(--soft);margin-top:2px}
 .tile.bad .n{color:var(--red)}.tile.warn .n{color:var(--amber)}
 button.tile:hover{border-color:var(--accent)}
@@ -76,7 +77,7 @@ tbody tr.sel td{background:var(--accent-soft)}
 .pill.bad{background:var(--red-soft);color:var(--red)}
 .pill.warn{background:var(--amber-soft);color:var(--amber)}
 .pill.grey{background:#EEECE6;color:var(--soft)}
-.pill.done{background:#E4EFD3;color:#3E6B00}
+.pill.done{background:#E6EFEA;color:#1B6B4F}
 .muted{color:var(--soft)}
 h3.sec{font-size:13px;color:var(--soft);font-weight:500;margin:0 0 8px;font-family:Inter}
 
@@ -109,7 +110,7 @@ h3.sec{font-size:13px;color:var(--soft);font-weight:500;margin:0 0 8px;font-fami
 .hist div{font-size:12.5px;padding:6px 0;border-top:1px dashed var(--line)}
 .hist div:first-child{border-top:0}
 .hist .who{color:var(--soft)}
-.hist code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:12px;font-family:ui-monospace,Menlo,Consolas,monospace}
+.hist code{background:var(--accent-soft);padding:1px 5px;border-radius:4px;font-size:12px;font-family:"IBM Plex Mono",Consolas,monospace}
 .child{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-top:1px dashed var(--line);font-size:13px;gap:8px}
 .child:first-child{border-top:0}
 .quickadd{display:flex;gap:6px;margin-top:8px}
@@ -127,7 +128,7 @@ h3.sec{font-size:13px;color:var(--soft);font-weight:500;margin:0 0 8px;font-fami
 .gantt svg{display:block;min-width:640px}
 .legend{display:flex;gap:16px;font-size:12px;color:var(--soft);margin-top:8px;flex-wrap:wrap}
 .legend span::before{content:"";display:inline-block;width:12px;height:8px;border-radius:2px;margin-right:5px;vertical-align:middle;background:var(--accent)}
-.legend .b::before{background:#C9D3D8}
+.legend .b::before{background:#CCD3CF}
 .legend .l::before{background:var(--red)}
 .legend .p::before{background:var(--amber);width:8px;border-radius:50%}
 .legend .d::before{background:var(--ink);width:2px;height:12px}
@@ -145,7 +146,7 @@ h3.sec{font-size:13px;color:var(--soft);font-weight:500;margin:0 0 8px;font-fami
 .opt h4{font-size:13.5px;margin-bottom:4px}
 .opt p{font-size:12.5px;color:var(--soft)}
 .mock{opacity:.7;pointer-events:none;font-size:12.5px}
-.mock .bar{height:8px;background:#DCE5E2;border-radius:4px;margin:6px 0}
+.mock .bar{height:8px;background:#D4E4DC;border-radius:4px;margin:6px 0}
 
 /* tour */
 .tour{background:var(--card);border-left:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:12px;position:sticky;top:57px;height:calc(100vh - 57px);overflow:auto}
@@ -157,15 +158,15 @@ h3.sec{font-size:13px;color:var(--soft);font-weight:500;margin:0 0 8px;font-fami
 .tour h3{font-size:17px}
 .tour p{color:var(--soft);font-size:13.5px}
 .tour .try{background:var(--accent-soft);border-left:3px solid var(--accent);padding:10px 12px;border-radius:0 8px 8px 0;font-size:13.5px}
-.tour .try.did{background:#EEF7DA;border-color:var(--lime)}
+.tour .try.did{background:#E6EFEA;border-color:var(--lime)}
 .tour .btns{display:flex;gap:8px;margin-top:auto}
 .tour .cta{font-size:12.5px;color:var(--soft);border-top:1px solid var(--line);padding-top:12px}
-.tour .end{background:var(--ink);color:#F4F3EF;padding:16px;border-radius:var(--radius)}
-.tour .end p{color:#B9C2C7}
+.tour .end{background:#1D2321;color:#E7E5DC;padding:16px;border-radius:var(--radius)}
+.tour .end p{color:#A3ABA8}
 .tour .end a{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;padding:9px 14px;border-radius:8px;text-decoration:none;font-size:13.5px}
 .tourfab{display:none;position:fixed;right:16px;bottom:16px;z-index:25;box-shadow:0 4px 14px rgba(0,0,0,.15)}
 .notour .tourfab{display:inline-block}
-.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:var(--ink);color:#F4F3EF;padding:9px 14px;border-radius:8px;font-size:13px;z-index:40;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast{position:fixed;left:50%;bottom:20px;transform:translateX(-50%);background:#1D2321;color:#E7E5DC;padding:9px 14px;border-radius:8px;font-size:13px;z-index:40;opacity:0;transition:opacity .2s;pointer-events:none}
 .toast.show{opacity:1}
 .empty{padding:24px;text-align:center;color:var(--soft);font-size:13px}
 .about{max-width:640px}
@@ -189,7 +190,7 @@ h3.sec{font-size:13px;color:var(--soft);font-weight:500;margin:0 0 8px;font-fami
 <body>
 
 <header class="top">
-  <a class="wordmark" href="https://trefnltd.com">trefn<i>.</i></a>
+  <a class="wordmark" href="https://trefnltd.com" aria-label="Trefn home"><svg xmlns="http://www.w3.org/2000/svg" class="logo" style="height:26px;width:auto;display:block" role="img" aria-label="Trefn" viewBox="0 0 280.4 100"><title>Trefn</title><g transform="translate(6 22) scale(1)"><g fill="#232A28"><rect x="0" y="0" width="16" height="16" rx="3"/><rect x="24" y="0" width="16" height="16" rx="3"/><rect x="0" y="24" width="16" height="16" rx="3"/><rect x="24" y="24" width="16" height="16" rx="3"/><rect x="48" y="24" width="16" height="16" rx="3"/><rect x="0" y="48" width="16" height="16" rx="3"/><rect x="24" y="48" width="16" height="16" rx="3"/><rect x="48" y="48" width="16" height="16" rx="3"/></g><rect x="50" y="-7" width="16" height="16" rx="3" fill="#1B6B4F" transform="rotate(12 58 1)"/></g><path fill="#232A28" transform="translate(99.000 72) scale(0.07200 -0.07200)" d="M406 140Q396 62 352.0 26.0Q308 -10 238 -10Q163 -10 116.5 27.5Q70 65 70 135V359H6V451H70V588H199V451H361V359H199V157Q199 98 253 98Q265 98 285.5 108.5Q306 119 312 169Z"/><path fill="#232A28" transform="translate(126.936 72) scale(0.07200 -0.07200)" d="M314 457Q333 457 356.5 451.5Q380 446 403 432L423 274L325 263L308 340Q288 352 273 352Q251 352 234.5 335.0Q218 318 218 285V97H298V0H29V97H89V353H24V451H208V365Q219 404 243.5 430.5Q268 457 314 457Z"/><path fill="#232A28" transform="translate(157.968 72) scale(0.07200 -0.07200)" d="M463 142Q458 82 404.0 36.0Q350 -10 253 -10Q152 -10 86.5 47.0Q21 104 21 217Q21 321 80.5 390.5Q140 460 247 460Q341 460 399.5 406.0Q458 352 459 264Q459 231 452 199H156Q167 92 262 92Q314 92 332.5 117.0Q351 142 355 162ZM326 274Q330 308 311.5 338.0Q293 368 247 368Q207 368 185.0 342.0Q163 316 157 274Z"/><path fill="#232A28" transform="translate(192.024 72) scale(0.07200 -0.07200)" d="M269 698Q300 698 337.0 689.0Q374 680 405 657L425 535L325 524L303 595Q282 601 267 601Q217 601 217 541V451H328V359H217V97H292V0H28V97H88V359H33V451H88V520Q88 590 134.0 644.0Q180 698 269 698Z"/><path fill="#232A28" transform="translate(216.000 72) scale(0.07200 -0.07200)" d="M581 0H332V97H392V254Q392 312 372.5 337.0Q353 362 315 362Q269 362 244.0 333.5Q219 305 218 259V97H278V0H29V97H89V353H24V451H218V382Q263 460 363 460Q427 460 474.0 422.0Q521 384 521 304V97H581Z"/><path fill="#1B6B4F" transform="translate(257.976 72) scale(0.07200 -0.07200)" d="M37 0V163H190V0Z"/></svg></a>
   <span class="tag">Demo - sample data, nothing is saved</span>
   <nav class="nav" id="nav"></nav>
   <div class="right">
@@ -418,13 +419,13 @@ function planner(){
   let g=`<svg viewBox="0 0 ${W} ${top+p.tasks.length*rowH+10}" style="width:100%;height:auto" font-family="Inter,system-ui" font-size="11">`;
   for(let i=0;i<days;i++){ const d=new Date(d0.getTime()+i*D); const wk=!isWorking(d);
     g+=`<rect x="${L+i*pw}" y="${top-6}" width="${pw}" height="${p.tasks.length*rowH+6}" fill="${wk?'#F1EFE9':'none'}"/>`;
-    if(i%2===0) g+=`<text x="${L+i*pw+pw/2}" y="${top-12}" text-anchor="middle" fill="#51616B">${d.getDate()}</text>`; }
+    if(i%2===0) g+=`<text x="${L+i*pw+pw/2}" y="${top-12}" text-anchor="middle" fill="#5A6360">${d.getDate()}</text>`; }
   p.tasks.forEach((t,i)=>{ const y=top+i*rowH, r=s[t.id];
-    g+=`<text x="8" y="${y+15}" fill="#26333B" font-size="12">${esc(t.name)}</text>`;
-    if(p.baseline&&p.baseline[t.id]){ const b=p.baseline[t.id]; g+=`<rect x="${x(b.start)}" y="${y+16}" width="${Math.max(2,x(b.finish)+pw-x(b.start))}" height="5" rx="2" fill="#C9D3D8"/>`; }
-    g+=`<rect x="${x(r.start)}" y="${y+3}" width="${Math.max(2,x(r.finish)+pw-x(r.start))}" height="12" rx="3" fill="${r.late?'#B3261E':'#166A5D'}"/>`;
+    g+=`<text x="8" y="${y+15}" fill="#232A28" font-size="12">${esc(t.name)}</text>`;
+    if(p.baseline&&p.baseline[t.id]){ const b=p.baseline[t.id]; g+=`<rect x="${x(b.start)}" y="${y+16}" width="${Math.max(2,x(b.finish)+pw-x(b.start))}" height="5" rx="2" fill="#CCD3CF"/>`; }
+    g+=`<rect x="${x(r.start)}" y="${y+3}" width="${Math.max(2,x(r.finish)+pw-x(r.start))}" height="12" rx="3" fill="${r.late?'#B3261E':'#1B6B4F'}"/>`;
     if(t.pin) g+=`<circle cx="${x(addWorkingDays(t.pin,p.shift))+pw/2}" cy="${y+9}" r="4" fill="${r.conflict?'#B3261E':'#B26A00'}"/>`;
-    if(t.deadline){ const dl=x(addWorkingDays(t.deadline,p.shift))+pw; g+=`<line x1="${dl}" x2="${dl}" y1="${y-2}" y2="${y+22}" stroke="#26333B" stroke-width="2"/>`; }
+    if(t.deadline){ const dl=x(addWorkingDays(t.deadline,p.shift))+pw; g+=`<line x1="${dl}" x2="${dl}" y1="${y-2}" y2="${y+22}" stroke="#232A28" stroke-width="2"/>`; }
   });
   g+=`</svg>`;
   h+=`<div class="gantt">${g}<div class="legend"><span>Planned</span><span class="b">Baseline</span><span class="l">Late against deadline</span><span class="p">Pinned start</span><span class="d">Deadline</span></div></div>`;
@@ -481,7 +482,7 @@ function about(){
     <li><b>Fail-loud loads</b> - when a data source breaks, the screen says so instead of showing an empty list.</li>
     <li><b>Decisions recorded, not documented</b> - labelled previews next to live screens, decided with a button.</li>
   </ul>
-  <p>A first module like the complaints or quotes register, live on your data, is around four weeks at a fixed price. The first step is an operations review.</p>
+  <p>A first module like the complaints or quotes register, live on your data, is a matter of weeks at a fixed price. The first step is a free conversation.</p>
   <p><a class="btn p" href="https://trefnltd.com" style="text-decoration:none">Back to trefnltd.com</a></p></div>`;
 }
 
@@ -584,8 +585,8 @@ function renderTour(){
   if(tour.hidden) return;
   if(tour.i>=STEPS.length){ const n=Object.keys(tour.done).length;
     t.innerHTML=`<div class="step"><span>Tour complete</span><span>${n} of ${STEPS.length} tried</span></div>
-    <h3>That was one module</h3><p>A complaints or quotes module like this, live on your data, is around four weeks at a fixed price. The first step is an operations review - one day of your time, on site or remote.</p>
-    <div class="end"><b>Want one of these on your data?</b><p>Book an operations review. If you go ahead with a build within 60 days, the review fee comes off the first invoice.</p><a href="https://trefnltd.com#contact">Talk to Trefn</a></div>
+    <h3>That was one module</h3><p>A complaints or quotes module like this, live on your data, is a matter of weeks at a fixed price. The first step is a free conversation - a short call, then a meeting about how your business runs.</p>
+    <div class="end"><b>Want one of these on your data?</b><p>The first conversation is free. You get a written proposal with a fixed price within a week - no charge until you say yes.</p><a href="https://trefnltd.com#contact">Talk to Trefn</a></div>
     <p class="muted" style="font-size:12.5px">Keep clicking around - nothing is saved, and <b>Reset</b> puts it all back.</p>
     <div class="btns"><button class="btn" onclick="tour.i=0;renderTour()">Start again</button><button class="btn" onclick="hideTour()">Close tour</button></div>`; return; }
   const s=STEPS[tour.i], did=!!tour.done[s.key];

@@ -3,24 +3,33 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Trefn - custom operations software for small and medium-sized businesses</title>
-<meta name="description" content="Trefn builds custom operations software - quoting, scheduling, job tracking, customer portals - for small and medium-sized businesses, at a fraction of agency cost. Operations reviews from £1,750.">
+<title>Trefn - tailored operational software for growing businesses</title>
+<meta name="description" content="Trefn builds tailored operational software for growing businesses - connecting processes, people and information in one place. Built for how business really works.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trefnltd.com/">
+<meta property="og:title" content="Trefn - Built for how business really works">
+<meta property="og:description" content="Trefn builds tailored operational software for growing businesses - connecting processes, people and information in one place. Built for how business really works.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22512%22%20height%3D%22512%22%20viewBox%3D%220%200%2064%2064%22%3E%3Ctitle%3ETrefn%20app%20icon%3C/title%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20rx%3D%2212%22%20fill%3D%22%23232A28%22/%3E%3Cg%20transform%3D%22translate%2815.157894736842106%2019.263157894736842%29%20scale%280.5263157894736842%29%22%3E%3Cg%20fill%3D%22%23E7E5DC%22%3E%3Crect%20x%3D%220%22%20y%3D%220%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2224%22%20y%3D%220%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%220%22%20y%3D%2224%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2224%22%20y%3D%2224%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2248%22%20y%3D%2224%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%220%22%20y%3D%2248%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2224%22%20y%3D%2248%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3Crect%20x%3D%2248%22%20y%3D%2248%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22/%3E%3C/g%3E%3Crect%20x%3D%2250%22%20y%3D%22-7%22%20width%3D%2216%22%20height%3D%2216%22%20rx%3D%223%22%20fill%3D%22%2352BD92%22%20transform%3D%22rotate%2812%2058%201%29%22/%3E%3C/g%3E%3C/svg%3E">
 <style>
   :root {
-    --ink: #26333B;        /* deep slate */
-    --ink-soft: #51616B;   /* muted slate for body copy */
-    --paper: #FAF9F6;      /* warm paper */
+    --ink: #232A28;        /* ink */
+    --ink-soft: #5A6360;   /* ink soft */
+    --paper: #FBFAF6;      /* paper */
     --card: #FFFFFF;
-    --line: #E4E1DA;
-    --accent: #166A5D;     /* slate teal - the "start here" colour */
-    --accent-soft: #EAF3F0;
+    --line: #E2DFD6;
+    --accent: #1B6B4F;     /* brand green */
+    --accent-soft: #E6EFEA;
+    --dark: #1D2321;       /* dark ground */
+    --cream: #E7E5DC;
+    --green-dark: #52BD92; /* green on dark */
+    --muted-dark: #A3ABA8;
     --radius: 10px;
-    --max: 880px;
+    --max: 960px;
   }
-  * { box-sizing: border-box; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body {
@@ -29,168 +38,323 @@
     color: var(--ink); background: var(--paper);
     -webkit-font-smoothing: antialiased;
   }
-  h1, h2, h3 { font-family: 'Archivo', system-ui, sans-serif; font-weight: 600; line-height: 1.2; letter-spacing: -0.01em; }
+  h1, h2, h3 { font-family: 'Zilla Slab', Georgia, serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
   a { color: var(--accent); }
   a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-  .price { font-variant-numeric: tabular-nums; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
 
-  header { padding: 28px 0; }
-  .header-row { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; }
-  .wordmark { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 0.01em; }
+  header.wrap { padding-top: 28px; padding-bottom: 28px; }
+  .header-row { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .logo { height: 34px; width: auto; display: block; }
   .say { font-size: 14px; color: var(--ink-soft); }
 
-  .hero { padding: 56px 0 48px; }
-  .hero h1 { font-size: clamp(30px, 5vw, 42px); max-width: 620px; margin-bottom: 18px; }
-  .hero p { font-size: 18px; color: var(--ink-soft); max-width: 560px; }
-  .hero .meaning { margin-top: 22px; font-size: 15px; color: var(--ink-soft); border-left: 3px solid var(--accent); padding-left: 14px; }
-  .hero .who { margin-top: 22px; font-size: 16px; color: var(--ink); max-width: 560px; }
+  /* labels, leads and straplines */
+  .k { display: inline-block; font-family: 'IBM Plex Mono', Consolas, monospace; font-weight: 500; font-size: 12px; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .block > p.lead { font-size: 18px; color: var(--ink); max-width: 640px; margin-bottom: 26px; }
+  .strap, .block > p.strap { margin-top: 26px; font-weight: 600; color: var(--accent); max-width: 720px; }
+  section p + p { margin-top: 14px; }
 
-  .ladder { padding: 8px 0 56px; }
+  /* hero */
+  .hero { padding-top: 56px; padding-bottom: 64px; }
+  .hero h1 { font-size: clamp(34px, 6vw, 52px); max-width: 680px; margin-bottom: 20px; }
+  .hero p { font-size: 19px; color: var(--ink-soft); max-width: 600px; }
+  .hero .meaning { margin-top: 22px; font-size: 15px; border-left: 3px solid var(--accent); padding-left: 14px; }
+  .actions { margin-top: 30px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .actions span { font-size: 14.5px; color: var(--ink-soft); max-width: 420px; line-height: 1.45; }
+
+  /* light sections */
+  .block { padding-top: 56px; padding-bottom: 56px; }
+  .block h2 { font-size: clamp(26px, 4vw, 34px); max-width: 720px; margin-bottom: 18px; }
+  .block > p { max-width: 680px; color: var(--ink-soft); }
+
+  /* what it is */
+  .two { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 36px; align-items: start; }
+  .two p { color: var(--ink-soft); }
+  .two strong { color: var(--ink); font-weight: 600; }
+  .layer { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .node { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; }
+  .node b { display: block; font-family: 'Zilla Slab', Georgia, serif; font-size: 17px; }
+  .node span { font-size: 14px; color: var(--ink-soft); }
+  .node.trefn { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .node.trefn span { color: #D5E8DF; }
+
+  /* cards */
   .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-  @media (max-width: 720px) { .cards { grid-template-columns: 1fr; } }
-  .card {
-    background: var(--card); border: 1px solid var(--line);
-    border-radius: var(--radius); padding: 24px 22px;
-    display: flex; flex-direction: column;
-  }
-  .card.start { border-color: var(--accent); border-width: 2px; }
-  .badge {
-    align-self: flex-start; background: var(--accent-soft); color: var(--accent);
-    font-size: 13px; font-weight: 500; padding: 3px 12px; border-radius: 999px;
-    margin-bottom: 14px;
-  }
-  .card .spacer { height: 41px; margin-bottom: 0; }
-  @media (max-width: 720px) { .card .spacer { display: none; } }
+  .cards.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 20px; }
   .card h3 { font-size: 18px; margin-bottom: 6px; }
-  .card .price { font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 26px; margin-bottom: 12px; }
   .card p { font-size: 15px; color: var(--ink-soft); }
-  .card .note { margin-top: auto; padding-top: 14px; font-size: 13.5px; color: var(--accent); font-weight: 500; }
+  .card.feature { border-color: var(--accent); border-width: 2px; }
+  .card .ask { font-family: 'Zilla Slab', Georgia, serif; font-weight: 600; font-size: 19px; color: var(--ink); line-height: 1.3; margin-bottom: 12px; }
+  .tag { display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: 13px; font-weight: 500; padding: 3px 12px; border-radius: 999px; }
+  .block > p.note-bar { margin-top: 22px; background: var(--accent-soft); color: var(--accent); border-radius: var(--radius); padding: 14px 18px; font-weight: 600; max-width: none; }
+  .block > p.quote { margin-top: 22px; font-family: 'Zilla Slab', Georgia, serif; font-size: 22px; font-weight: 600; color: var(--ink); }
 
-  .retainer-row {
-    margin-top: 20px; padding: 18px 22px;
-    background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-    display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap;
-    font-size: 15px;
-  }
-  .retainer-row strong { font-weight: 500; }
-  .retainer-row span { color: var(--ink-soft); }
+  /* how it works */
+  .flow { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 28px; counter-reset: none; }
+  .flow li { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 16px 18px; font-weight: 600; font-size: 15.5px; line-height: 1.35; }
+  .flow li span { display: block; font-family: 'IBM Plex Mono', Consolas, monospace; font-weight: 500; font-size: 12px; color: var(--accent); margin-bottom: 8px; letter-spacing: 0.06em; }
 
-  .how { padding: 24px 0 64px; }
-  .how h2 { font-size: 24px; margin-bottom: 24px; }
-  .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; }
-  @media (max-width: 720px) { .steps { grid-template-columns: 1fr; gap: 20px; } }
-  .step h3 { font-size: 16px; margin-bottom: 6px; }
-  .step p { font-size: 15px; color: var(--ink-soft); }
-  .step .k { display: inline-block; font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 13px; color: var(--accent); margin-bottom: 8px; letter-spacing: 0.06em; }
+  /* proof */
+  .ba { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  .ba ul { list-style: none; margin-top: 8px; }
+  .ba li { font-size: 15.5px; padding: 6px 0; border-top: 1px solid var(--line); }
+  .ba li:first-child { border-top: 0; }
+  .ba .before h3 { color: var(--ink-soft); }
+  .ba .before li { color: var(--ink-soft); }
+  .ba .after { border-color: var(--accent); border-width: 2px; }
+  .ba .after h3 { color: var(--accent); }
+  .quotes { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+  figure.say-so { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 22px 20px; }
+  figure.say-so blockquote { font-family: 'Zilla Slab', Georgia, serif; font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--ink); }
+  figure.say-so figcaption { margin-top: 12px; font-size: 14px; color: var(--ink-soft); }
 
-  .cta { background: var(--ink); color: #F4F3EF; padding: 52px 0; border-radius: 0; }
-  .cta .wrap { display: flex; justify-content: space-between; align-items: center; gap: 24px; flex-wrap: wrap; }
-  .cta h2 { font-size: 24px; margin-bottom: 6px; }
-  .cta p { color: #B9C2C7; font-size: 15px; max-width: 460px; }
+  /* dark bands */
+  .band { background: var(--dark); color: var(--cream); padding: 64px 0; }
+  .band h2 { font-size: clamp(26px, 4vw, 34px); margin-bottom: 18px; max-width: 720px; }
+  .band p { color: var(--muted-dark); max-width: 640px; }
+  .band .k { color: var(--green-dark); }
+  .band .punch { margin-top: 26px; font-family: 'Zilla Slab', Georgia, serif; font-size: clamp(22px, 3.4vw, 28px); font-weight: 700; color: var(--green-dark); line-height: 1.3; }
+  .band .aim { margin-top: 20px; color: var(--cream); font-weight: 600; }
+  .vs { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; max-width: 720px; }
+  .vs div { border: 1px solid #36403D; border-radius: var(--radius); padding: 18px 20px; color: var(--muted-dark); font-size: 15px; }
+  .vs b { display: block; margin-top: 6px; font-family: 'Zilla Slab', Georgia, serif; font-size: 20px; color: var(--cream); line-height: 1.3; }
+  .vs .yes { border-color: var(--green-dark); }
+  .vs .yes b { color: var(--green-dark); }
+
+  /* buttons */
   .btn {
     display: inline-block; background: var(--accent); color: #fff;
     font-family: 'Inter', sans-serif; font-weight: 500; font-size: 16px;
     padding: 13px 26px; border-radius: 8px; text-decoration: none; white-space: nowrap;
   }
-  .btn:hover { background: #11594e; }
+  .btn:hover { background: #14523C; }
   .btn.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
   .btn.ghost:hover { background: var(--accent-soft); }
-  .hero .demo { margin-top: 22px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
-  .hero .demo span { font-size: 14.5px; color: var(--ink-soft); max-width: 420px; line-height: 1.45; }
-  .cta .demo-link { display: block; margin-top: 10px; font-size: 14px; color: #B9C2C7; }
-  .cta .demo-link a { color: #F4F3EF; }
 
-  footer { padding: 28px 0 40px; font-size: 13.5px; color: var(--ink-soft); }
+  /* next step */
+  .cta { background: var(--dark); color: var(--cream); padding: 64px 0; }
+  .cta .wrap { display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; }
+  .cta .k { color: var(--green-dark); }
+  .cta h2 { font-size: clamp(28px, 4.5vw, 38px); margin-bottom: 4px; }
+  .cta .start { font-family: 'Zilla Slab', Georgia, serif; font-size: 24px; font-weight: 700; color: var(--green-dark); margin-bottom: 16px; }
+  .cta p { color: var(--muted-dark); font-size: 16px; max-width: 520px; }
+  .cta p + p { margin-top: 12px; }
+  .cta .demo-link { display: block; margin-top: 14px; font-size: 14px; color: var(--muted-dark); }
+  .cta .demo-link a { color: var(--green-dark); }
+
+  footer.wrap { padding-top: 40px; padding-bottom: 40px; font-size: 13.5px; color: var(--ink-soft); }
+  footer .close { font-family: 'Zilla Slab', Georgia, serif; font-size: 17px; font-weight: 600; color: var(--ink); margin-bottom: 14px; }
   .footer-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+
+  @media (max-width: 860px) {
+    .cards.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .flow { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 720px) {
+    .two, .ba, .quotes, .vs { grid-template-columns: 1fr; }
+    .cards, .cards.four { grid-template-columns: 1fr; }
+    .flow { grid-template-columns: 1fr; }
+    .block { padding-top: 44px; padding-bottom: 44px; }
+    .wrap { padding-left: 16px; padding-right: 16px; }
+    .band, .cta { padding: 52px 0; }
+  }
 </style>
 </head>
 <body>
 
 <header class="wrap">
   <div class="header-row">
-    <span class="wordmark">Trefn</span>
+    <a href="/" aria-label="Trefn home"><svg xmlns="http://www.w3.org/2000/svg" class="logo" role="img" aria-label="Trefn" viewBox="0 0 280.4 100"><title>Trefn</title><g transform="translate(6 22) scale(1)"><g fill="#232A28"><rect x="0" y="0" width="16" height="16" rx="3"/><rect x="24" y="0" width="16" height="16" rx="3"/><rect x="0" y="24" width="16" height="16" rx="3"/><rect x="24" y="24" width="16" height="16" rx="3"/><rect x="48" y="24" width="16" height="16" rx="3"/><rect x="0" y="48" width="16" height="16" rx="3"/><rect x="24" y="48" width="16" height="16" rx="3"/><rect x="48" y="48" width="16" height="16" rx="3"/></g><rect x="50" y="-7" width="16" height="16" rx="3" fill="#1B6B4F" transform="rotate(12 58 1)"/></g><path fill="#232A28" transform="translate(99.000 72) scale(0.07200 -0.07200)" d="M406 140Q396 62 352.0 26.0Q308 -10 238 -10Q163 -10 116.5 27.5Q70 65 70 135V359H6V451H70V588H199V451H361V359H199V157Q199 98 253 98Q265 98 285.5 108.5Q306 119 312 169Z"/><path fill="#232A28" transform="translate(126.936 72) scale(0.07200 -0.07200)" d="M314 457Q333 457 356.5 451.5Q380 446 403 432L423 274L325 263L308 340Q288 352 273 352Q251 352 234.5 335.0Q218 318 218 285V97H298V0H29V97H89V353H24V451H208V365Q219 404 243.5 430.5Q268 457 314 457Z"/><path fill="#232A28" transform="translate(157.968 72) scale(0.07200 -0.07200)" d="M463 142Q458 82 404.0 36.0Q350 -10 253 -10Q152 -10 86.5 47.0Q21 104 21 217Q21 321 80.5 390.5Q140 460 247 460Q341 460 399.5 406.0Q458 352 459 264Q459 231 452 199H156Q167 92 262 92Q314 92 332.5 117.0Q351 142 355 162ZM326 274Q330 308 311.5 338.0Q293 368 247 368Q207 368 185.0 342.0Q163 316 157 274Z"/><path fill="#232A28" transform="translate(192.024 72) scale(0.07200 -0.07200)" d="M269 698Q300 698 337.0 689.0Q374 680 405 657L425 535L325 524L303 595Q282 601 267 601Q217 601 217 541V451H328V359H217V97H292V0H28V97H88V359H33V451H88V520Q88 590 134.0 644.0Q180 698 269 698Z"/><path fill="#232A28" transform="translate(216.000 72) scale(0.07200 -0.07200)" d="M581 0H332V97H392V254Q392 312 372.5 337.0Q353 362 315 362Q269 362 244.0 333.5Q219 305 218 259V97H278V0H29V97H89V353H24V451H218V382Q263 460 363 460Q427 460 474.0 422.0Q521 384 521 304V97H581Z"/><path fill="#1B6B4F" transform="translate(257.976 72) scale(0.07200 -0.07200)" d="M37 0V163H190V0Z"/></svg></a>
     <span class="say">say: trevn</span>
   </div>
 </header>
 
 <main>
   <section class="hero wrap">
-    <h1>We put trefn on your operations</h1>
-    <p>Custom operations software for small and medium-sized businesses. Quoting, scheduling, job tracking, customer portals - whatever your team is currently holding together with spreadsheets, email and memory. Built around how you actually work, not a big system you have to bend your business to fit.</p>
-    <p class="meaning"><em>Rhoi trefn ar</em> - to put in order. It's what we do, so it's what we're called.</p>
-    <p class="who">Hello - I'm Ross. Trefn is me, a lot of hands-on experience running operations, and a habit of building the software I wished already existed. You'll deal with me from first chat to handover.</p>
-    <div class="demo">
-      <a class="btn ghost" href="demo/">See a live demo</a>
-      <span>One module, sample data, nothing to install. Click around and see what "built around how you work" actually means.</span>
+    <h1>Built for how business really works.</h1>
+    <p>Trefn builds tailored operational software for growing businesses - connecting processes, people and information in one place.</p>
+    <p class="meaning"><em>Rhoi trefn ar</em> - to put in order. That's the job, so that's the name.</p>
+    <div class="actions">
+      <a class="btn" href="#contact">Start a conversation</a>
+      <a class="btn ghost" href="demo/">See it working</a>
     </div>
   </section>
 
-  <section class="ladder wrap" aria-label="Services and prices">
+  <section class="block wrap" id="what">
+    <span class="k">What it is</span>
+    <h2>What is Trefn?</h2>
+    <div class="two">
+      <div>
+        <p>Trefn creates tailored operational systems for growing businesses.</p>
+        <p>Think of it as the connected layer between your people, your processes and the software you already use.</p>
+        <p><strong>It is not one fixed product.</strong> It is built around how your business actually works - so the system fits the process, not the other way round.</p>
+      </div>
+      <div class="layer" role="img" aria-label="People, process and systems, joined up by Trefn into one connected way of working">
+        <div class="node"><b>People</b><span>Teams doing the work</span></div>
+        <div class="node"><b>Process</b><span>How work moves</span></div>
+        <div class="node"><b>Systems</b><span>Tools already used</span></div>
+        <div class="node trefn"><b>Trefn</b><span>One connected way of working</span></div>
+      </div>
+    </div>
+    <p class="strap">Built for visibility, clarity, continuity and insight.</p>
+  </section>
+
+  <section class="block wrap" id="real-life">
+    <span class="k">In plain English</span>
+    <h2>What does that look like in real life?</h2>
+    <p class="lead">You do not need to know what system you need. You just need to know what is not working.</p>
     <div class="cards">
-      <div class="card start">
-        <span class="badge">Start here</span>
-        <h3>Operations review</h3>
-        <div class="price">£1,750</div>
-        <p>I spend a day with you and your team, watching how the work actually flows. You get a plain-English picture of where the manual effort is, what it's costing you, what's worth building first - and a fixed quote for building it.</p>
-        <div class="note">Fully credited against your first build</div>
-      </div>
-      <div class="card">
-        <div class="spacer"></div>
-        <h3>First module</h3>
-        <div class="price">£9,500</div>
-        <p>One piece of the puzzle, live on your real data in around four weeks - quoting, scheduling, a customer portal, or whatever the review flagged first. Data import, training and 30 days of aftercare included.</p>
-      </div>
-      <div class="card">
-        <div class="spacer"></div>
-        <h3>Operations platform</h3>
-        <div class="price">from £38,000</div>
-        <p>The whole thing, delivered in phases: several modules working together, integrations with the tools you already use, a move off the spreadsheets, and a tidy handover. Agencies quote well into six figures for the same shape.</p>
-      </div>
-    </div>
-    <div class="retainer-row">
-      <strong>Support &amp; development retainer - from £1,400/month</strong>
-      <span>A bit of my time each month, reserved for you, for fixes and the improvements you'll think of once you're using it.</span>
+      <div class="card"><p class="ask">"Where is that project up to?"</p><span class="tag">Project tracking</span></div>
+      <div class="card"><p class="ask">"Who owns the next step?"</p><span class="tag">Clear ownership</span></div>
+      <div class="card"><p class="ask">"Why is this late?"</p><span class="tag">Live insight</span></div>
+      <div class="card"><p class="ask">"Can the customer see status?"</p><span class="tag">Portal access</span></div>
+      <div class="card"><p class="ask">"What needs attention today?"</p><span class="tag">Dashboards</span></div>
+      <div class="card"><p class="ask">"Why are there three answers?"</p><span class="tag">One source of truth</span></div>
     </div>
   </section>
 
-  <section class="how wrap">
-    <h2>How it works</h2>
-    <div class="steps">
-      <div class="step">
-        <span class="k">FIRST</span>
-        <h3>I look before I quote</h3>
-        <p>Every build starts with a review, so the price you get is fixed and based on how your business really runs - not an estimate that grows once we're under way.</p>
+  <section class="band" id="problem">
+    <div class="wrap">
+      <span class="k">The problem</span>
+      <h2>Growth creates complexity.</h2>
+      <p>It happens gradually. A spreadsheet. A shared folder. An email trail. A workaround. Another workaround. Another process.</p>
+      <p>Every decision makes sense at the time - until information becomes fragmented and nobody can see how work really moves through the business. The business still runs, but it runs on memory, chasing, assumptions and heroic individuals.</p>
+      <p class="punch">The problem is not effort.<br>The problem is clarity.</p>
+      <p class="aim">The aim is simple: make the work visible.</p>
+    </div>
+  </section>
+
+  <section class="block wrap" id="ross">
+    <span class="k">Why Ross</span>
+    <h2>Not a software salesman. Not just a developer.</h2>
+    <p>Ross did not come to this as a corporate software salesman. He came to it from inside businesses - banking, sales, project management, the Civil Service and operations. Across every role, he kept seeing the same problem: good people fighting bad systems.</p>
+    <p class="quote">"I'm interested in the need behind the need."</p>
+    <div class="cards" style="margin-top: 28px;">
+      <div class="card"><h3>Understands businesses</h3><p>He has worked inside teams, projects and operations - not just around them.</p></div>
+      <div class="card feature"><h3>Understands process</h3><p>He asks how work happens before deciding what to build.</p></div>
+      <div class="card"><h3>Builds the solution</h3><p>The person understanding the problem is the person creating the system.</p></div>
+    </div>
+    <p class="note-bar">You do not get passed from salesperson to account manager to developer. You work with Ross.</p>
+  </section>
+
+  <section class="block wrap" id="how">
+    <span class="k">How it works</span>
+    <h2>Built with you. Not sold to you.</h2>
+    <p>Trefn starts with your business, not a product catalogue. Ross sits with the people doing the work, learns the process, finds the friction and builds around the answers.</p>
+    <ol class="flow">
+      <li><span>01</span>Walk the process</li>
+      <li><span>02</span>Find the friction</li>
+      <li><span>03</span>Design the solution</li>
+      <li><span>04</span>Build early</li>
+      <li><span>05</span>Improve with users</li>
+    </ol>
+    <p class="strap">The first question is not "what software do you want?" It is "show me what is not working."</p>
+  </section>
+
+  <section class="block wrap" id="proof">
+    <span class="k">Proof</span>
+    <h2>Pelham Connect: from fragmented work to one connected platform.</h2>
+    <p>Pelham had software. The problem was that nothing connected. Project information was spread across boards, spreadsheets, email chains and shared folders - with no single view of the whole journey.</p>
+    <div class="ba">
+      <div class="card before">
+        <h3>Before</h3>
+        <ul>
+          <li>Duplicate data entry</li>
+          <li>Internal forms between teams</li>
+          <li>Manual updates</li>
+          <li>Time spent chasing information</li>
+          <li>No complete project view</li>
+        </ul>
       </div>
-      <div class="step">
-        <span class="k">THEN</span>
-        <h3>No surprises on price</h3>
-        <p>You know the cost before anything gets built. Bigger jobs are split into phases with clear milestones, so you're using working software early rather than waiting months for a big reveal.</p>
-      </div>
-      <div class="step">
-        <span class="k">ALWAYS</span>
-        <h3>Yours to keep</h3>
-        <p>Your data, your system, written up properly and taught to your team. You don't need me around to keep it running - though I'm happy to be.</p>
+      <div class="card after">
+        <h3>After</h3>
+        <ul>
+          <li>One connected process</li>
+          <li>Shared visibility</li>
+          <li>One source of truth</li>
+          <li>Real-time information</li>
+          <li>Less handoff and rework</li>
+        </ul>
       </div>
     </div>
+    <p class="strap">Less administration. More visibility. People spend more time doing the work - and less time administering it.</p>
+    <div class="quotes">
+      <figure class="say-so">
+        <blockquote>"Ross doesn't just build what you ask for - he works out what the business actually needs and builds that."</blockquote>
+        <figcaption>Oliver Felstead, Founder, Pelham</figcaption>
+      </figure>
+      <figure class="say-so">
+        <blockquote>"Before Connect, our project information was spread across hundreds of separate boards and spreadsheets, and nobody had one view of where a job actually was. Ross built us a single platform that runs the whole process end to end."</blockquote>
+        <figcaption>Lisa Higgs, Operations Director, Pelham</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="block wrap" id="help">
+    <span class="k">What it can do</span>
+    <h2>What could Trefn help with?</h2>
+    <div class="cards four">
+      <div class="card"><h3>Projects</h3><p>Know exactly where work is.</p></div>
+      <div class="card"><h3>Quoting</h3><p>Create, approve and track quotes.</p></div>
+      <div class="card"><h3>Workload</h3><p>See capacity before it becomes a problem.</p></div>
+      <div class="card"><h3>Requests</h3><p>Stop chasing approvals and updates.</p></div>
+      <div class="card"><h3>Reporting</h3><p>Use live data instead of another spreadsheet.</p></div>
+      <div class="card"><h3>Customer visibility</h3><p>Give customers status without another email.</p></div>
+      <div class="card"><h3>AI &amp; automation</h3><p>Remove repetitive admin.</p></div>
+      <div class="card"><h3>Data migration</h3><p>Move from messy trackers into one system.</p></div>
+    </div>
+    <p class="strap">The system changes because the business changes.</p>
+    <div class="actions">
+      <a class="btn ghost" href="demo/">See it working</a>
+      <span>A sample system with made-up data. Nothing to install - just click around.</span>
+    </div>
+  </section>
+
+  <section class="band" id="ai">
+    <div class="wrap">
+      <span class="k">AI</span>
+      <h2>AI where it helps. Not where it doesn't.</h2>
+      <p>Trefn uses automation and AI where it saves time, reduces manual effort and improves accuracy.</p>
+      <div class="vs">
+        <div>The question is not:<b>"How can we use AI?"</b></div>
+        <div class="yes">The question is:<b>"What are people wasting time doing?"</b></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="why">
+    <span class="k">Why Trefn</span>
+    <h2>Built around your business. Not the other way round.</h2>
+    <div class="cards four">
+      <div class="card feature"><h3>Visibility</h3><p>Everyone can see what is happening.</p></div>
+      <div class="card"><h3>Clarity</h3><p>One source of truth, not three answers.</p></div>
+      <div class="card"><h3>Continuity</h3><p>Knowledge sits in the business, not one person's head.</p></div>
+      <div class="card"><h3>Insight</h3><p>Leaders can see why things are happening.</p></div>
+    </div>
+    <p class="strap">Because businesses grow faster when everyone can see what is happening.</p>
   </section>
 
   <section class="cta" id="contact">
     <div class="wrap">
       <div>
-        <h2>Let's have a chat</h2>
-        <p>Not sure whether a review is the right first step? Drop me an email and we'll work it out together. No pitch, no pressure - just a conversation about what's getting in your way.</p>
+        <span class="k">Next step</span>
+        <h2>What is the process everyone hates?</h2>
+        <p class="start">Start there.</p>
+        <p>The first conversation is not about software. It is about understanding what is slowing the business down, where information gets lost, and whether Trefn is the right fit.</p>
+        <p>You do not need to know what system you need. You just need to know what is not working.</p>
         <span class="demo-link">Want to see it first? <a href="demo/">Try the demo</a> - five minutes, no sign-up.</span>
       </div>
-      <a class="btn" href="mailto:ross@trefnltd.com?subject=Hello%20from%20the%20website">Email ross@trefnltd.com</a>
+      <a class="btn" href="mailto:ross@trefnltd.com?subject=The%20process%20everyone%20hates">Email ross@trefnltd.com</a>
     </div>
   </section>
 </main>
 
 <footer class="wrap">
+  <p class="close">Create operational clarity. Connect the work. Make the business easier to run.</p>
   <div class="footer-row">
     <span>Trefn Ltd · England &amp; Wales</span>
-    <span>All prices exclude VAT</span>
+    <span>ross@trefnltd.com</span>
   </div>
 </footer>
 
