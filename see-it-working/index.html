@@ -4,18 +4,18 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>!function(d){if(!window.matchMedia||!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.trefnReady)d.classList.remove('motion')},3000)}}(document.documentElement)</script>
-<title>Pelham Connect case study - Trefn</title>
-<meta name="description" content="Pelham had software. The problem was that nothing connected. How Ross built Pelham Connect - one view of every live project, in one connected platform.">
-<link rel="canonical" href="https://trefnltd.com/pelham-connect/">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://trefnltd.com/pelham-connect/">
+<title>See it working - a one-minute tour of the Trefn demo</title>
+<meta name="description" content="A one-minute tour of the Trefn demo - a sample system with made-up data. Late work, working-day clocks, change history and a plan that shows slip.">
+<link rel="canonical" href="https://trefnltd.com/see-it-working/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://trefnltd.com/see-it-working/">
 <meta property="og:site_name" content="Trefn">
 <meta property="og:locale" content="en_GB">
-<meta property="og:title" content="Pelham Connect: from fragmented work to one connected platform">
-<meta property="og:description" content="Pelham had software. The problem was that nothing connected. How Ross built Pelham Connect - one view of every live project, in one connected platform.">
-<meta property="og:image" content="https://trefnltd.com/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+<meta property="og:title" content="See it working - a one-minute tour of the Trefn demo">
+<meta property="og:description" content="A one-minute tour of the Trefn demo - a sample system with made-up data. Late work, working-day clocks, change history and a plan that shows slip.">
+<meta property="og:image" content="https://trefnltd.com/img/video-see-it-working.jpg">
+<meta property="og:image:width" content="1280">
+<meta property="og:image:height" content="720">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,6 +23,74 @@
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://trefnltd.com/see-it-working/#webpage",
+      "url": "https://trefnltd.com/see-it-working/",
+      "name": "See it working - a one-minute tour of the Trefn demo",
+      "description": "A one-minute tour of the Trefn demo - a sample system with made-up data. Late work, working-day clocks, change history and a plan that shows slip.",
+      "inLanguage": "en-GB",
+      "isPartOf": {
+        "@id": "https://trefnltd.com/#website"
+      },
+      "primaryImageOfPage": "https://trefnltd.com/img/video-see-it-working.jpg",
+      "video": {
+        "@id": "https://trefnltd.com/see-it-working/#video"
+      },
+      "breadcrumb": {
+        "@id": "https://trefnltd.com/see-it-working/#breadcrumb"
+      }
+    },
+    {
+      "@type": "VideoObject",
+      "@id": "https://trefnltd.com/see-it-working/#video",
+      "name": "See it working - a one-minute tour of the Trefn demo",
+      "description": "A one-minute tour of the Trefn demo - a sample system with made-up data: late work worked out from the records, clocks in working days, change history on every save, quote numbers from the data and a plan that shows slip.",
+      "thumbnailUrl": [
+        "https://trefnltd.com/img/video-see-it-working.jpg"
+      ],
+      "uploadDate": "2026-10-06",
+      "duration": "PT58S",
+      "embedUrl": "https://www.youtube-nocookie.com/embed/dIjEl2RhqgQ",
+      "inLanguage": "en-GB",
+      "publisher": {
+        "@type": "Organization",
+        "@id": "https://trefnltd.com/#organization",
+        "name": "Trefn",
+        "url": "https://trefnltd.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://trefnltd.com/icon-512.png",
+          "width": 512,
+          "height": 512
+        }
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://trefnltd.com/see-it-working/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Trefn",
+          "item": "https://trefnltd.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Demo video",
+          "item": "https://trefnltd.com/see-it-working/"
+        }
+      ]
+    }
+  ]
+}
+</script>
 <style>
   :root {
     --ink: #232A28;        /* ink */
@@ -204,6 +272,35 @@
     .band, .cta { padding: 52px 0; }
   }
 
+  /* videos: a poster until someone presses play */
+  .watch { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 44px; align-items: center; }
+  .watch-text > p { color: var(--ink-soft); max-width: 440px; }
+  .videos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+  figure.video { margin: 0; }
+  .video-box { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: var(--dark); box-shadow: 0 22px 44px -28px rgba(29, 35, 33, .55); }
+  .video-box > a, .video-box > iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-play { display: block; }
+  .video-play:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .video-play img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .video-play .play { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 9px; background: var(--accent); color: #fff; font-weight: 600; font-size: 15px; line-height: 1; padding: 10px 16px 10px 14px; border-radius: 999px; box-shadow: 0 8px 20px -8px rgba(0, 0, 0, .55); transition: transform .35s cubic-bezier(.34,1.56,.64,1), filter .3s ease; }
+  .video-play .play::before { content: ""; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+  .video-play .play em { font-style: normal; font-family: 'IBM Plex Mono', Consolas, monospace; font-weight: 400; font-size: 13px; opacity: .85; }
+  .video-play:hover img, .video-play:focus-visible img { transform: scale(1.025); }
+  .video-play:hover .play, .video-play:focus-visible .play { transform: translateY(-2px); filter: brightness(.88); }
+  figure.video figcaption { margin-top: 10px; font-size: 13.5px; color: var(--ink-soft); }
+  figure.video figcaption b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .watch { grid-template-columns: 1fr; gap: 26px; } }
+  @media (max-width: 600px) {
+    .videos { grid-template-columns: 1fr; }
+    .video-play .play { right: 10px; bottom: 10px; font-size: 14px; padding: 8px 13px 8px 11px; }
+  }
+  .watch-hero { padding-bottom: 24px; }
+  .watch-main .actions { margin-top: 22px; }
+  .seen { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 10px 28px; margin-top: 8px; max-width: 860px; }
+  .seen li { display: flex; gap: 12px; align-items: baseline; padding: 10px 0; border-top: 1px solid var(--line); font-size: 16px; }
+  .seen li::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 2px; background: var(--accent); transform: rotate(12deg) translateY(-1px); }
+  @media (max-width: 720px) { .seen { grid-template-columns: 1fr; } }
+
   /* ---------- motion ---------- */
   .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--ink); transform: translateX(-101%); transition: transform .38s cubic-bezier(.2,.7,.2,1); }
   .btn:hover::before, .btn:focus-visible::before { transform: none; }
@@ -317,49 +414,6 @@
   .chips li::before { content: ""; display: inline-block; width: 9px; height: 9px; border-radius: 2px; background: var(--accent); transform: rotate(12deg); margin-right: 10px; vertical-align: 1px; }
   .lisa { margin-top: 30px; }
 </style>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://trefnltd.com/pelham-connect/#webpage",
-      "url": "https://trefnltd.com/pelham-connect/",
-      "name": "Pelham Connect case study",
-      "description": "Pelham had software. The problem was that nothing connected. How Ross built Pelham Connect - one view of every live project, in one connected platform.",
-      "inLanguage": "en-GB",
-      "isPartOf": {
-        "@id": "https://trefnltd.com/#website"
-      },
-      "author": {
-        "@id": "https://trefnltd.com/#ross"
-      },
-      "primaryImageOfPage": "https://trefnltd.com/pelham-connect/connect-projects.webp",
-      "breadcrumb": {
-        "@id": "https://trefnltd.com/pelham-connect/#breadcrumb"
-      }
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://trefnltd.com/pelham-connect/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Trefn",
-          "item": "https://trefnltd.com/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Pelham Connect case study",
-          "item": "https://trefnltd.com/pelham-connect/"
-        }
-      ]
-    }
-  ]
-}
-</script>
 </head>
 <body>
 
@@ -374,81 +428,40 @@
 </header>
 
 <main>
-  <section class="case-hero wrap">
-    <p class="crumb"><a href="/">Trefn</a> / Case study</p>
-    <span class="k">Proof</span>
-    <h1>Pelham Connect: from fragmented work to one connected platform.</h1>
-    <p class="lead">Pelham had software. The problem was that nothing connected. Project information was spread across boards, spreadsheets, email chains and shared folders - with no single view of the whole journey.</p>
-    <figure class="say-so">
-      <blockquote>"Ross doesn't just build what you ask for - he works out what the business actually needs and builds that."</blockquote>
-      <figcaption>Oliver Felstead, Founder, Pelham</figcaption>
-    </figure>
+  <section class="case-hero watch-hero wrap">
+    <p class="crumb"><a href="/">Trefn</a> / Demo video</p>
+    <span class="k">The demo</span>
+    <h1>See it working: a one-minute tour of the Trefn demo.</h1>
+    <p class="lead">A sample system with made-up data. Watch the tour, then click around it yourself.</p>
   </section>
 
-  <section class="block wrap" id="change">
-    <span class="k">Transformation</span>
-    <h2>Less administration. More visibility.</h2>
-    <div class="ba">
-      <div class="card before">
-        <h3>Before</h3>
-        <ul>
-          <li><span>Duplicate data entry</span></li>
-          <li><span>Internal forms between teams</span></li>
-          <li><span>Manual updates</span></li>
-          <li><span>Time spent chasing information</span></li>
-          <li><span>No complete project view</span></li>
-        </ul>
+  <section class="wrap watch-main">
+    <figure class="video">
+      <div class="video-box">
+        <iframe src="https://www.youtube-nocookie.com/embed/dIjEl2RhqgQ?rel=0" title="See it working - a one-minute tour of the Trefn demo" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
-      <div class="card after">
-        <h3>After</h3>
-        <ul>
-          <li><span>One connected process</span></li>
-          <li><span>Shared visibility</span></li>
-          <li><span>One source of truth</span></li>
-          <li><span>Real-time information</span></li>
-          <li><span>Less handoff and rework</span></li>
-        </ul>
-      </div>
+      <figcaption>One minute. Plays from YouTube.</figcaption>
+    </figure>
+    <div class="actions">
+      <a class="btn" href="/demo/">Try the demo</a>
+      <span>Nothing to install - just click around.</span>
     </div>
-    <p class="strap">People spend more time doing the work - and less time administering it.</p>
   </section>
 
-  <section class="block wrap" id="built">
-    <span class="k">What he built</span>
-    <h2>One view of every live project.</h2>
-    <p>Projects can be seen as cards, lists or timelines - with status, ownership and progress visible in one place.</p>
-    <figure class="shot">
-      <img src="connect-projects.webp" width="1536" height="758" alt="Pelham Connect projects view: live projects as cards, each showing status, owners and stage progress">
-      <figcaption>Projects as cards. Screens shown with sample data. Figures and product names blurred.</figcaption>
-    </figure>
-    <p class="strap">This is what "bespoke" means: not a generic tool, but the screens a team actually needs to run the work.</p>
-  </section>
-
-  <section class="block wrap" id="insight">
-    <span class="k">Operational insight</span>
-    <h2>Stop guessing. Start knowing.</h2>
-    <p>The system turns live work into live insight: where things are stuck, which teams are overloaded and whether the issue is people, process or capacity.</p>
-    <figure class="shot">
-      <img src="connect-workload.webp" width="1536" height="468" loading="lazy" alt="Pelham Connect workload view: live projects by stage and load by account manager">
-      <figcaption>Workload by account manager. Screens shown with sample data. Figures and product names blurred.</figcaption>
-    </figure>
-  </section>
-
-  <section class="block wrap" id="workflows">
-    <span class="k">Connected workflows</span>
-    <h2>Not one screen. A connected way of working.</h2>
-    <ul class="chips">
-      <li>Quote / costing</li>
-      <li>Packaging library</li>
-      <li>Sample requests</li>
-      <li>Continuous improvement</li>
-      <li>Portal access</li>
-      <li>Lessons learned</li>
+  <section class="block wrap" id="what-you-see">
+    <span class="k">What you'll see</span>
+    <h2>The patterns in every module Trefn builds.</h2>
+    <ul class="seen">
+      <li>The number nobody updates - late and due-soon work worked out from the records</li>
+      <li>Clocks in working days - stamped, or held with a reason</li>
+      <li>Change history on every save</li>
+      <li>Follow-up actions as real records</li>
+      <li>Quote numbers that come from the data</li>
+      <li>A plan with a baseline, so slip is visible</li>
+      <li>An honest message when a data source fails</li>
+      <li>Decisions recorded with who chose what, and when</li>
     </ul>
-    <figure class="say-so lisa">
-      <blockquote>"Before Connect, our project information was spread across hundreds of separate boards and spreadsheets, and nobody had one view of where a job actually was. Ross built us a single platform that runs the whole process end to end."</blockquote>
-      <figcaption>Lisa Higgs, Operations Director, Pelham</figcaption>
-    </figure>
+    <p class="strap">Every system is bespoke - built around how your business actually works, not a fixed product.</p>
   </section>
 
   <section class="cta" id="contact">
@@ -495,7 +508,7 @@
   Array.prototype.forEach.call(document.querySelectorAll('.ba ul'), function (ul) {
     Array.prototype.forEach.call(ul.children, function (li, i) { li.style.setProperty('--i', i); });
   });
-  var els = document.querySelectorAll('main .k, .crumb, .lead, .block > p, figure.say-so, figure.shot, .ba, .chips, .cta p, .cta .btn, .cta .demo-link');
+  var els = document.querySelectorAll('main .k, .crumb, .lead, .block > p, .seen, .cta p, .cta .btn, .cta .demo-link');
   Array.prototype.forEach.call(els, function (el) { el.classList.add('rv'); });
   var watch = document.querySelectorAll('.rv, .split-words');
   if (!('IntersectionObserver' in window)) { Array.prototype.forEach.call(watch, function (el) { el.classList.add('in'); }); return; }

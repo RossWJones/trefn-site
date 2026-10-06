@@ -205,6 +205,29 @@
     .band, .cta { padding: 52px 0; }
   }
 
+  /* videos: a poster until someone presses play */
+  .watch { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 44px; align-items: center; }
+  .watch-text > p { color: var(--ink-soft); max-width: 440px; }
+  .videos { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 8px; }
+  figure.video { margin: 0; }
+  .video-box { position: relative; aspect-ratio: 16 / 9; border-radius: 12px; overflow: hidden; background: var(--dark); box-shadow: 0 22px 44px -28px rgba(29, 35, 33, .55); }
+  .video-box > a, .video-box > iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+  .video-play { display: block; }
+  .video-play:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .video-play img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.2,.7,.2,1); }
+  .video-play .play { position: absolute; right: 14px; bottom: 14px; display: inline-flex; align-items: center; gap: 9px; background: var(--accent); color: #fff; font-weight: 600; font-size: 15px; line-height: 1; padding: 10px 16px 10px 14px; border-radius: 999px; box-shadow: 0 8px 20px -8px rgba(0, 0, 0, .55); transition: transform .35s cubic-bezier(.34,1.56,.64,1), filter .3s ease; }
+  .video-play .play::before { content: ""; border-style: solid; border-width: 7px 0 7px 11px; border-color: transparent transparent transparent #fff; }
+  .video-play .play em { font-style: normal; font-family: 'IBM Plex Mono', Consolas, monospace; font-weight: 400; font-size: 13px; opacity: .85; }
+  .video-play:hover img, .video-play:focus-visible img { transform: scale(1.025); }
+  .video-play:hover .play, .video-play:focus-visible .play { transform: translateY(-2px); filter: brightness(.88); }
+  figure.video figcaption { margin-top: 10px; font-size: 13.5px; color: var(--ink-soft); }
+  figure.video figcaption b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .watch { grid-template-columns: 1fr; gap: 26px; } }
+  @media (max-width: 600px) {
+    .videos { grid-template-columns: 1fr; }
+    .video-play .play { right: 10px; bottom: 10px; font-size: 14px; padding: 8px 13px 8px 11px; }
+  }
+
   /* ---------- motion ---------- */
   .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--ink); transform: translateX(-101%); transition: transform .38s cubic-bezier(.2,.7,.2,1); }
   .btn:hover::before, .btn:focus-visible::before { transform: none; }
@@ -363,7 +386,8 @@
       ],
       "sameAs": [
         "https://www.linkedin.com/company/trefn-ltd",
-        "https://find-and-update.company-information.service.gov.uk/company/17427838"
+        "https://find-and-update.company-information.service.gov.uk/company/17427838",
+        "https://www.youtube.com/@TrefnLtd"
       ]
     },
     {
@@ -456,6 +480,29 @@
       <div class="card"><p class="ask">"Can the customer see status?"</p><span class="tag">Portal access</span></div>
       <div class="card"><p class="ask">"What needs attention today?"</p><span class="tag">Dashboards</span></div>
       <div class="card"><p class="ask">"Why are there three answers?"</p><span class="tag">One source of truth</span></div>
+    </div>
+  </section>
+
+  <section class="block wrap" id="see-it">
+    <div class="watch">
+      <div class="watch-text">
+        <span class="k">The demo</span>
+        <h2>Watch a one-minute tour. Then try it yourself.</h2>
+        <p>A sample system with made-up data: late work flagged from the records, clocks in working days, change history on every save, and a plan that shows when things slip.</p>
+        <div class="actions">
+          <a class="btn ghost" href="demo/">Try the demo</a>
+          <span>Nothing to install - just click around.</span>
+        </div>
+      </div>
+      <figure class="video">
+        <div class="video-box">
+          <a class="video-play" href="see-it-working/" data-yt="dIjEl2RhqgQ" data-title="See it working - a one-minute tour of the Trefn demo" aria-label="Play the video: See it working - a one-minute tour of the Trefn demo">
+            <img src="img/video-see-it-working.webp" width="1280" height="720" alt="" loading="lazy" decoding="async">
+            <span class="play" aria-hidden="true">Play <em>1 min</em></span>
+          </a>
+        </div>
+        <figcaption>Plays from YouTube.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -630,7 +677,7 @@
   <p class="close">Create operational clarity. Connect the work. Make the business easier to run.</p>
   <div class="footer-row">
     <span>Trefn Ltd · Nottingham</span>
-    <span><a href="mailto:ross@trefnltd.com">ross@trefnltd.com</a> · <a href="https://www.linkedin.com/company/trefn-ltd">LinkedIn</a></span>
+    <span><a href="mailto:ross@trefnltd.com">ross@trefnltd.com</a> · <a href="https://www.linkedin.com/company/trefn-ltd">LinkedIn</a> · <a href="https://www.youtube.com/@TrefnLtd">YouTube</a></span>
   </div>
   <p class="legal">Trefn Ltd is registered in England and Wales, company number 17427838. Registered office: 17 Fairview Road, Nottingham NG5 4GW.</p>
 </footer>
@@ -740,7 +787,7 @@
     });
 
     // Things that rise into view as you scroll
-    var singles = 'main section:not(.hero) .k, .block > p, .person > *, .faq-list, .band p:not(.frags), .two > div, .hs-foot .strap, .hs-foot .actions, .actions:not(.intro), .cta p, .cta .demo-link, .cta .btn, .ba';
+    var singles = 'main section:not(.hero) .k, .block > p, .person > *, .faq-list, .band p:not(.frags), .two > div, .hs-foot .strap, .hs-foot .actions, .actions:not(.intro), .cta p, .cta .demo-link, .cta .btn, .ba, .watch-text > p, figure.video';
     Array.prototype.forEach.call(document.querySelectorAll(singles), function (el) { el.classList.add('rv'); });
     Array.prototype.forEach.call(document.querySelectorAll('.cards, .quotes, .vs, .layer, .flow'), function (g) {
       Array.prototype.forEach.call(g.children, function (c, i) {
@@ -782,6 +829,26 @@
     rt = setTimeout(function () { measureHeader(); setupHs(); onScroll(); }, 120);
   });
   window.addEventListener('load', function () { measureHeader(); setupHs(); });
+})();
+</script>
+
+<script>
+// Press-to-play: swap the poster for the YouTube player (privacy-enhanced mode) only when asked.
+(function () {
+  Array.prototype.forEach.call(document.querySelectorAll('a.video-play[data-yt]'), function (a) {
+    a.addEventListener('click', function (e) {
+      if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      var f = document.createElement('iframe');
+      f.src = 'https://www.youtube-nocookie.com/embed/' + a.getAttribute('data-yt') + '?autoplay=1&rel=0&playsinline=1';
+      f.setAttribute('title', a.getAttribute('data-title'));
+      f.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+      f.setAttribute('allowfullscreen', '');
+      f.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+      a.parentNode.replaceChild(f, a);
+      f.focus();
+    });
+  });
 })();
 </script>
 
