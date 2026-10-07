@@ -301,6 +301,37 @@
   .seen li::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 2px; background: var(--accent); transform: rotate(12deg) translateY(-1px); }
   @media (max-width: 720px) { .seen { grid-template-columns: 1fr; } }
 
+  /* navigation */
+  .site-nav { display: flex; align-items: center; gap: 28px; }
+  .site-nav ul { list-style: none; display: flex; align-items: center; gap: 24px; }
+  .site-nav ul a { position: relative; display: block; padding: 6px 0; color: var(--ink-soft); text-decoration: none; font-size: 15px; font-weight: 500; white-space: nowrap; transition: color .25s ease; }
+  .site-nav ul a::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 2px; background: var(--accent); transform: scaleX(0); transform-origin: left; transition: transform .35s cubic-bezier(.2,.7,.2,1); }
+  .site-nav ul a:hover, .site-nav ul a.on, .site-nav ul a[aria-current="page"] { color: var(--ink); }
+  .site-nav ul a:hover::after, .site-nav ul a.on::after, .site-nav ul a[aria-current="page"]::after { transform: scaleX(1); }
+  .menu-btn { display: none; }
+  html { overflow-x: clip; } /* the hero tiles fly in from outside the page; never let that add a sideways scroll */
+  .say-logo { display: block; margin-top: 2px; font-size: 12px; color: var(--ink-soft); }
+  @media (max-width: 899px) {
+    .header-row { flex-wrap: nowrap; }
+    .menu-btn { display: inline-flex; align-items: center; gap: 10px; font: 500 15px 'Inter', system-ui, sans-serif; color: var(--ink); background: transparent; border: 1px solid var(--line); border-radius: 8px; padding: 9px 14px; cursor: pointer; }
+    .menu-icon { position: relative; width: 16px; height: 2px; background: currentColor; border-radius: 2px; transition: background .2s ease; }
+    .menu-icon::before, .menu-icon::after { content: ""; position: absolute; left: 0; width: 16px; height: 2px; background: currentColor; border-radius: 2px; transition: transform .3s cubic-bezier(.2,.7,.2,1); }
+    .menu-icon::before { transform: translateY(-5px); }
+    .menu-icon::after { transform: translateY(5px); }
+    .nav-open .menu-icon { background: transparent; }
+    .nav-open .menu-icon::before { transform: rotate(45deg); }
+    .nav-open .menu-icon::after { transform: rotate(-45deg); }
+    .site-nav { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; padding: 4px 16px 22px; background: var(--paper); border-top: 1px solid var(--line); box-shadow: 0 22px 30px -22px rgba(29, 35, 33, .45); max-height: calc(100vh - 70px); overflow-y: auto; }
+    .nav-open .site-nav { display: flex; }
+    .site-nav ul { flex-direction: column; align-items: stretch; gap: 0; }
+    .site-nav ul a { display: flex; align-items: center; gap: 14px; padding: 15px 2px; border-bottom: 1px solid var(--line); font-family: 'Zilla Slab', Georgia, serif; font-weight: 700; font-size: 21px; color: var(--ink); }
+    .site-nav ul a::after { display: none; }
+    .site-nav ul a::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 2px; background: var(--line); transform: rotate(12deg); transition: background .25s ease; }
+    .site-nav ul a.on, .site-nav ul a[aria-current="page"] { color: var(--accent); }
+    .site-nav ul a.on::before, .site-nav ul a[aria-current="page"]::before { background: var(--accent); }
+    .site-nav .btn { margin-top: 20px; text-align: center; }
+  }
+
   /* ---------- motion ---------- */
   .btn::before { content: ""; position: absolute; inset: 0; z-index: -1; background: var(--ink); transform: translateX(-101%); transition: transform .38s cubic-bezier(.2,.7,.2,1); }
   .btn:hover::before, .btn:focus-visible::before { transform: none; }
@@ -420,10 +451,17 @@
 <header class="site-header" id="top">
   <div class="wrap header-row">
     <a href="/" aria-label="Trefn home"><svg xmlns="http://www.w3.org/2000/svg" class="logo" role="img" aria-label="Trefn" viewBox="0 0 280.4 100"><title>Trefn</title><g transform="translate(6 22) scale(1)"><g fill="#232A28"><rect x="0" y="0" width="16" height="16" rx="3"/><rect x="24" y="0" width="16" height="16" rx="3"/><rect x="0" y="24" width="16" height="16" rx="3"/><rect x="24" y="24" width="16" height="16" rx="3"/><rect x="48" y="24" width="16" height="16" rx="3"/><rect x="0" y="48" width="16" height="16" rx="3"/><rect x="24" y="48" width="16" height="16" rx="3"/><rect x="48" y="48" width="16" height="16" rx="3"/></g><g class="logo-tile"><rect x="50" y="-7" width="16" height="16" rx="3" fill="#1B6B4F" transform="rotate(12 58 1)"/></g></g><path fill="#232A28" transform="translate(99.000 72) scale(0.07200 -0.07200)" d="M406 140Q396 62 352.0 26.0Q308 -10 238 -10Q163 -10 116.5 27.5Q70 65 70 135V359H6V451H70V588H199V451H361V359H199V157Q199 98 253 98Q265 98 285.5 108.5Q306 119 312 169Z"/><path fill="#232A28" transform="translate(126.936 72) scale(0.07200 -0.07200)" d="M314 457Q333 457 356.5 451.5Q380 446 403 432L423 274L325 263L308 340Q288 352 273 352Q251 352 234.5 335.0Q218 318 218 285V97H298V0H29V97H89V353H24V451H208V365Q219 404 243.5 430.5Q268 457 314 457Z"/><path fill="#232A28" transform="translate(157.968 72) scale(0.07200 -0.07200)" d="M463 142Q458 82 404.0 36.0Q350 -10 253 -10Q152 -10 86.5 47.0Q21 104 21 217Q21 321 80.5 390.5Q140 460 247 460Q341 460 399.5 406.0Q458 352 459 264Q459 231 452 199H156Q167 92 262 92Q314 92 332.5 117.0Q351 142 355 162ZM326 274Q330 308 311.5 338.0Q293 368 247 368Q207 368 185.0 342.0Q163 316 157 274Z"/><path fill="#232A28" transform="translate(192.024 72) scale(0.07200 -0.07200)" d="M269 698Q300 698 337.0 689.0Q374 680 405 657L425 535L325 524L303 595Q282 601 267 601Q217 601 217 541V451H328V359H217V97H292V0H28V97H88V359H33V451H88V520Q88 590 134.0 644.0Q180 698 269 698Z"/><path fill="#232A28" transform="translate(216.000 72) scale(0.07200 -0.07200)" d="M581 0H332V97H392V254Q392 312 372.5 337.0Q353 362 315 362Q269 362 244.0 333.5Q219 305 218 259V97H278V0H29V97H89V353H24V451H218V382Q263 460 363 460Q427 460 474.0 422.0Q521 384 521 304V97H581Z"/><path fill="#1B6B4F" transform="translate(257.976 72) scale(0.07200 -0.07200)" d="M37 0V163H190V0Z"/></svg></a>
-    <div class="header-end">
-      <span class="say">say: trevn</span>
-      <a class="btn small" href="/#contact">Start a conversation</a>
-    </div>
+    <nav class="site-nav" id="site-nav" aria-label="Main">
+      <ul>
+        <li><a href="/#see-it">Demo</a></li>
+        <li><a href="/#ross">About</a></li>
+        <li><a href="/#how">How it works</a></li>
+        <li><a href="/pelham-connect/">Case study</a></li>
+        <li><a href="/#questions">Questions</a></li>
+      </ul>
+      <a class="btn small" href="#contact">Start a conversation</a>
+    </nav>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
   </div>
 </header>
 
@@ -518,5 +556,58 @@
   Array.prototype.forEach.call(watch, function (el) { io.observe(el); });
 })();
 </script>
+<script>
+// Menu: Menu button under 900px, and on the home page the link for the part you're reading is underlined.
+(function () {
+  var header = document.querySelector('.site-header');
+  var btn = header && header.querySelector('.menu-btn');
+  var nav = document.getElementById('site-nav');
+  if (!btn || !nav) return;
+  var label = btn.querySelector('.menu-label');
+  function setOpen(open, backToButton) {
+    header.classList.toggle('nav-open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    label.textContent = open ? 'Close' : 'Menu';
+    if (open) { var first = nav.querySelector('a'); if (first) first.focus(); }
+    else if (backToButton) btn.focus();
+  }
+  btn.addEventListener('click', function () { setOpen(!header.classList.contains('nav-open')); });
+  nav.addEventListener('click', function (e) { if (e.target.closest && e.target.closest('a')) setOpen(false); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && header.classList.contains('nav-open')) setOpen(false, true);
+  });
+  document.addEventListener('click', function (e) {
+    if (header.classList.contains('nav-open') && !header.contains(e.target)) setOpen(false);
+  });
+  window.addEventListener('resize', function () {
+    if (window.innerWidth >= 900 && header.classList.contains('nav-open')) setOpen(false);
+  });
+
+  var spies = nav.querySelectorAll('a[data-spy]');
+  if (!spies.length) return;
+  var bySection = {};
+  Array.prototype.forEach.call(spies, function (a) { bySection[a.getAttribute('data-spy')] = a; });
+  var sections = Array.prototype.slice.call(document.querySelectorAll('main section[id]'));
+  var current = null, ticking = false;
+  function spy() {
+    ticking = false;
+    var line = header.offsetHeight + window.innerHeight * 0.3, found = null;
+    for (var i = 0; i < sections.length; i++) {
+      var r = sections[i].getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) { found = sections[i].id; break; }
+    }
+    var a = (found && bySection[found]) || null;
+    if (a === current) return;
+    if (current) current.classList.remove('on');
+    if (a) a.classList.add('on');
+    current = a;
+  }
+  window.addEventListener('scroll', function () { if (!ticking) { ticking = true; requestAnimationFrame(spy); } }, { passive: true });
+  window.addEventListener('resize', spy);
+  window.addEventListener('load', spy);
+  spy();
+})();
+</script>
+
 </body>
 </html>
