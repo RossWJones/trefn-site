@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free 60-day trial - Trefn Complaints</title>
+<meta name="description" content="Try Trefn Complaints free for 60 days with your own team. Log complaints, chase the actions and see what's overdue - in your Microsoft 365, on your own data.">
+<!-- Until trials can be run: keep this page out of search and unlinked. At launch, delete the next line and add the page to sitemap.xml. -->
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://trefnltd.com/trial/">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:wght@600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #232A28; --ink-soft: #5A6360; --paper: #FBFAF6; --card: #FFFFFF; --line: #E2DFD6;
+    --accent: #1B6B4F; --accent-soft: #E6EFEA; --dark: #1D2321; --cream: #E7E5DC; --green-dark: #52BD92;
+    --bad: #A3271F; --bad-soft: #FBEDEB; --warn-soft: #FDF4E3; --warn: #8A5A00;
+    --radius: 10px; --max: 1040px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+  body { background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, sans-serif; font-size: 17px; line-height: 1.6; }
+  a { color: var(--accent); }
+  h1, h2, h3 { font-family: 'Zilla Slab', Georgia, serif; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; }
+  .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding-left: 24px; padding-right: 24px; }
+  .k { display: inline-block; font-family: 'IBM Plex Mono', Consolas, monospace; font-weight: 500; font-size: 12px; color: var(--accent); margin-bottom: 10px; letter-spacing: 0.08em; text-transform: uppercase; }
+  .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  /* header */
+  header.site { padding-top: 18px; padding-bottom: 18px; display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+  .logo { height: 34px; width: auto; display: block; }
+  header.site nav { display: flex; gap: 22px; font-size: 15px; font-weight: 500; }
+  header.site nav a { color: var(--ink); text-decoration: none; }
+  header.site nav a:hover { color: var(--accent); }
+  @media (max-width: 560px) { header.site nav .wide { display: none; } }
+
+  /* hero */
+  .hero { padding-top: 36px; padding-bottom: 32px; }
+  .hero h1 { font-size: clamp(32px, 5.4vw, 48px); max-width: 700px; }
+  .hero h1 span { color: var(--accent); }
+  .hero p.lead { margin-top: 14px; font-size: 19px; color: var(--ink-soft); max-width: 620px; }
+  .ticks { list-style: none; margin-top: 22px; display: flex; flex-wrap: wrap; gap: 10px 26px; font-size: 15px; font-weight: 500; }
+  .ticks li { display: flex; align-items: center; gap: 8px; }
+  .ticks li::before { content: ""; width: 16px; height: 16px; border-radius: 4px; background: var(--accent) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M4 8.2l2.6 2.6L12 5.4' fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/16px no-repeat; flex: none; }
+
+  /* layout */
+  .grid { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr); gap: 36px; align-items: start; padding-bottom: 64px; }
+  @media (max-width: 860px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+
+  /* form card */
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 30px; }
+  @media (max-width: 480px) { .card { padding: 22px 18px; } }
+  .row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 560px) { .row2 { grid-template-columns: 1fr; } }
+  .field { margin-bottom: 20px; }
+  .field > label, .field > legend, .label { display: block; font-weight: 600; font-size: 15px; margin-bottom: 7px; }
+  .opt { font-weight: 400; color: var(--ink-soft); }
+  .hint { display: block; font-size: 14px; color: var(--ink-soft); margin: -3px 0 7px; }
+  fieldset { border: 0; min-width: 0; }
+  input[type=text], input[type=email], select, textarea {
+    width: 100%; font: inherit; font-size: 16px; color: var(--ink); background: #fff;
+    border: 1px solid #CFCBC0; border-radius: 8px; padding: 11px 12px;
+  }
+  textarea { min-height: 92px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: 3px solid rgba(27, 107, 79, .25); border-color: var(--accent); }
+  .choices { display: flex; flex-wrap: wrap; gap: 8px; }
+  .choices label { position: relative; display: inline-flex; align-items: center; cursor: pointer; }
+  .choices input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+  .choices span { display: inline-block; padding: 9px 16px; border: 1px solid #CFCBC0; border-radius: 999px; font-size: 15px; background: #fff; transition: background .15s, border-color .15s; }
+  .choices label:hover span { border-color: var(--accent); }
+  .choices input:checked + span { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); font-weight: 600; }
+  .choices input:focus-visible + span { outline: 3px solid rgba(27, 107, 79, .35); outline-offset: 2px; }
+  .consent { display: flex; gap: 10px; align-items: flex-start; font-size: 15px; }
+  .consent input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--accent); flex: none; }
+
+  /* problems */
+  .field.bad input[type=text], .field.bad input[type=email], .field.bad select, .field.bad textarea { border-color: var(--bad); background: var(--bad-soft); }
+  .field.bad .choices span { border-color: var(--bad); }
+  .err { display: none; color: var(--bad); font-size: 14px; font-weight: 600; margin-top: 6px; }
+  .field.bad .err { display: block; }
+
+  /* notes and messages */
+  .note { display: none; margin-top: 10px; padding: 12px 14px; border-radius: 8px; font-size: 15px; background: var(--warn-soft); border-left: 4px solid #D29A2D; }
+  .note.show { display: block; }
+  .note a { font-weight: 600; }
+  .box { display: none; margin-bottom: 22px; padding: 16px 18px; border-radius: 10px; font-size: 15.5px; }
+  .box.show { display: block; }
+  .box h2 { font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 700; margin-bottom: 4px; letter-spacing: 0; }
+  .box ul { margin: 6px 0 0 18px; }
+  .box.bad { background: var(--bad-soft); border: 2px solid var(--bad); color: #5E1712; }
+  .box.bad a { color: var(--bad); font-weight: 600; }
+  .box.warn { background: var(--warn-soft); border: 2px solid #D29A2D; color: #4D3200; }
+
+  /* submit */
+  .send { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 6px; }
+  .btn { display: inline-block; background: var(--accent); color: #fff; border: 0; cursor: pointer; font: inherit; font-weight: 600; font-size: 16px; padding: 13px 26px; border-radius: 8px; text-decoration: none; }
+  .btn:hover { background: #155a42; }
+  .btn[disabled] { opacity: .65; cursor: progress; }
+  .send small { color: var(--ink-soft); font-size: 14px; }
+
+  /* done */
+  .done { display: none; }
+  .done.show { display: block; }
+  .done h2 { font-size: 30px; margin-bottom: 10px; }
+  .done h2 span { color: var(--accent); }
+  .done p + p { margin-top: 10px; }
+  .done p { color: var(--ink-soft); }
+  .done ol { margin: 16px 0 0 20px; color: var(--ink-soft); }
+
+  /* steps */
+  aside h2 { font-size: 22px; margin-bottom: 14px; }
+  .steps { list-style: none; border-left: 2px solid var(--line); margin-left: 6px; }
+  .steps li { position: relative; padding: 0 0 20px 22px; }
+  .steps li::before { content: ""; position: absolute; left: -7px; top: 6px; width: 12px; height: 12px; border-radius: 3px; background: var(--accent); }
+  .steps b { display: block; font-family: 'Zilla Slab', Georgia, serif; font-size: 18px; }
+  .steps em { font-style: normal; font-family: 'IBM Plex Mono', Consolas, monospace; font-size: 12px; color: var(--accent); letter-spacing: .06em; margin-right: 6px; }
+  .steps p { font-size: 15px; color: var(--ink-soft); }
+  .aside-card { margin-top: 10px; padding: 18px; border-radius: 12px; background: var(--accent-soft); font-size: 15px; }
+  .aside-card a { font-weight: 600; }
+
+  /* terms */
+  .legal-wrap { border-top: 1px solid var(--line); padding-top: 40px; padding-bottom: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+  @media (max-width: 860px) { .legal-wrap { grid-template-columns: 1fr; } }
+  .legal-wrap h2 { font-size: 22px; margin-bottom: 10px; }
+  .legal-wrap ul { margin-left: 18px; font-size: 15px; color: var(--ink-soft); }
+  .legal-wrap li + li { margin-top: 7px; }
+  .legal-wrap p { font-size: 15px; color: var(--ink-soft); }
+  .legal-wrap p + p { margin-top: 8px; }
+  .legal-wrap section:target h2 { color: var(--accent); }
+
+  footer.wrap { padding-top: 32px; padding-bottom: 40px; font-size: 13.5px; color: var(--ink-soft); border-top: 1px solid var(--line); }
+  .footer-row { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  footer .footer-row a { color: var(--ink-soft); }
+  footer .legal { margin-top: 10px; font-size: 12.5px; }
+
+  /* the honeypot: people never see it, form-filling bots do */
+  .hp { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+</style>
+</head>
+<body>
+
+<header class="wrap site">
+  <a href="/" aria-label="Trefn home"><svg class="logo" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Trefn" viewBox="0 0 280.4 100"><title>Trefn</title><g transform="translate(6 22) scale(1)"><g fill="#232A28"><rect x="0" y="0" width="16" height="16" rx="3"/><rect x="24" y="0" width="16" height="16" rx="3"/><rect x="0" y="24" width="16" height="16" rx="3"/><rect x="24" y="24" width="16" height="16" rx="3"/><rect x="48" y="24" width="16" height="16" rx="3"/><rect x="0" y="48" width="16" height="16" rx="3"/><rect x="24" y="48" width="16" height="16" rx="3"/><rect x="48" y="48" width="16" height="16" rx="3"/></g><g><rect x="50" y="-7" width="16" height="16" rx="3" fill="#1B6B4F" transform="rotate(12 58 1)"/></g></g><path fill="#232A28" transform="translate(99.000 72) scale(0.07200 -0.07200)" d="M406 140Q396 62 352.0 26.0Q308 -10 238 -10Q163 -10 116.5 27.5Q70 65 70 135V359H6V451H70V588H199V451H361V359H199V157Q199 98 253 98Q265 98 285.5 108.5Q306 119 312 169Z"/><path fill="#232A28" transform="translate(126.936 72) scale(0.07200 -0.07200)" d="M314 457Q333 457 356.5 451.5Q380 446 403 432L423 274L325 263L308 340Q288 352 273 352Q251 352 234.5 335.0Q218 318 218 285V97H298V0H29V97H89V353H24V451H208V365Q219 404 243.5 430.5Q268 457 314 457Z"/><path fill="#232A28" transform="translate(157.968 72) scale(0.07200 -0.07200)" d="M463 142Q458 82 404.0 36.0Q350 -10 253 -10Q152 -10 86.5 47.0Q21 104 21 217Q21 321 80.5 390.5Q140 460 247 460Q341 460 399.5 406.0Q458 352 459 264Q459 231 452 199H156Q167 92 262 92Q314 92 332.5 117.0Q351 142 355 162ZM326 274Q330 308 311.5 338.0Q293 368 247 368Q207 368 185.0 342.0Q163 316 157 274Z"/><path fill="#232A28" transform="translate(192.024 72) scale(0.07200 -0.07200)" d="M269 698Q300 698 337.0 689.0Q374 680 405 657L425 535L325 524L303 595Q282 601 267 601Q217 601 217 541V451H328V359H217V97H292V0H28V97H88V359H33V451H88V520Q88 590 134.0 644.0Q180 698 269 698Z"/><path fill="#232A28" transform="translate(216.000 72) scale(0.07200 -0.07200)" d="M581 0H332V97H392V254Q392 312 372.5 337.0Q353 362 315 362Q269 362 244.0 333.5Q219 305 218 259V97H278V0H29V97H89V353H24V451H218V382Q263 460 363 460Q427 460 474.0 422.0Q521 384 521 304V97H581Z"/><path fill="#1B6B4F" transform="translate(257.976 72) scale(0.07200 -0.07200)" d="M37 0V163H190V0Z"/></svg></a>
+  <nav aria-label="Main">
+    <a class="wide" href="/#how">How it works</a>
+    <a href="/demo/">Demo</a>
+    <a class="wide" href="/#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <section class="wrap hero">
+    <span class="k">Free 60-day trial</span>
+    <h1>Try Trefn Complaints with your own team<span>.</span></h1>
+    <p class="lead">Log complaints, chase the actions and see what's overdue - in your Microsoft 365, on your own data.</p>
+    <ul class="ticks">
+      <li>Runs inside your own Microsoft 365</li>
+      <li>Every record stays in your SharePoint</li>
+      <li>Nothing to install, no card</li>
+    </ul>
+  </section>
+
+  <div class="wrap grid">
+    <div class="card">
+      <div class="box warn" id="not-connected" role="alert">
+        <h2>This form isn't connected yet</h2>
+        Requests can't be sent from this page yet. Please email <a href="mailto:ross@trefnltd.com?subject=Trial%20request">ross@trefnltd.com</a> instead.
+      </div>
+
+      <div class="box bad" id="problem" role="alert" tabindex="-1"></div>
+
+      <form id="trial-form" method="POST" action="https://formspree.io/f/xaeoyeqo">
+        <input type="hidden" name="_subject" value="Trial request - Trefn Complaints">
+        <div class="hp" aria-hidden="true">
+          <label for="gotcha">Leave this empty</label>
+          <input type="text" id="gotcha" name="_gotcha" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="row2">
+          <div class="field" data-for="name">
+            <label for="f-name">Your name</label>
+            <input type="text" id="f-name" name="name" autocomplete="name" maxlength="120" required>
+            <span class="err" id="e-name">Add your name.</span>
+          </div>
+          <div class="field" data-for="email">
+            <label for="f-email">Work email</label>
+            <input type="email" id="f-email" name="email" autocomplete="email" maxlength="200" required>
+            <span class="err" id="e-email">Add your work email - it's where the reply goes.</span>
+          </div>
+        </div>
+
+        <div class="row2">
+          <div class="field" data-for="company">
+            <label for="f-company">Company</label>
+            <input type="text" id="f-company" name="company" autocomplete="organization" maxlength="160" required>
+            <span class="err" id="e-company">Add the company name.</span>
+          </div>
+          <div class="field" data-for="sector">
+            <label for="f-sector">What the company does</label>
+            <select id="f-sector" name="sector" required>
+              <option value="">Choose one…</option>
+              <option>Food and drink</option>
+              <option>Manufacturing</option>
+              <option>Distribution and logistics</option>
+              <option>Retail</option>
+              <option>Services</option>
+              <option>Something else</option>
+            </select>
+            <span class="err" id="e-sector">Choose what the company does.</span>
+          </div>
+        </div>
+
+        <fieldset class="field" data-for="microsoft_365">
+          <legend>Do you use Microsoft 365 for email and files?</legend>
+          <div class="choices">
+            <label><input type="radio" name="microsoft_365" value="Yes" required><span>Yes</span></label>
+            <label><input type="radio" name="microsoft_365" value="No"><span>No</span></label>
+            <label><input type="radio" name="microsoft_365" value="Not sure"><span>Not sure</span></label>
+          </div>
+          <span class="err" id="e-microsoft_365">Pick one - Not sure is fine.</span>
+          <div class="note" id="note-no">No Microsoft 365? The trial runs inside it, so it won't work for you - but a bespoke build might. <a href="mailto:ross@trefnltd.com?subject=A%20first%20conversation">Book a free first conversation</a>, or send this and we'll be in touch.</div>
+          <div class="note" id="note-unsure">That's fine - we'll help you check when we reply. If your work email is on Outlook and your files are in SharePoint or Teams, the answer is usually yes.</div>
+        </fieldset>
+
+        <fieldset class="field" data-for="approves_apps">
+          <legend>Who approves new apps in your Microsoft 365?</legend>
+          <span class="hint">The trial needs one approval from them - about 10 minutes.</span>
+          <div class="choices">
+            <label><input type="radio" name="approves_apps" value="Me" required><span>Me</span></label>
+            <label><input type="radio" name="approves_apps" value="Our IT provider"><span>Our IT provider</span></label>
+            <label><input type="radio" name="approves_apps" value="Someone else"><span>Someone else</span></label>
+            <label><input type="radio" name="approves_apps" value="Not sure"><span>Not sure</span></label>
+          </div>
+          <span class="err" id="e-approves_apps">Pick one - Not sure is fine.</span>
+        </fieldset>
+
+        <fieldset class="field" data-for="users">
+          <legend>About how many people would use it?</legend>
+          <div class="choices">
+            <label><input type="radio" name="users" value="1-5" required><span>1-5</span></label>
+            <label><input type="radio" name="users" value="6-20"><span>6-20</span></label>
+            <label><input type="radio" name="users" value="21-50"><span>21-50</span></label>
+            <label><input type="radio" name="users" value="More than 50"><span>More than 50</span></label>
+          </div>
+          <span class="err" id="e-users">Pick a rough number.</span>
+        </fieldset>
+
+        <div class="field" data-for="tracked_today">
+          <label for="f-tracked">How do you track complaints today? <span class="opt">(optional)</span></label>
+          <span class="hint" id="h-tracked">A spreadsheet, a shared inbox, a paper log - anything helps.</span>
+          <textarea id="f-tracked" name="tracked_today" maxlength="1000" aria-describedby="h-tracked"></textarea>
+        </div>
+
+        <div class="field" data-for="agreed">
+          <label class="consent"><input type="checkbox" id="f-agreed" name="agreed" value="Yes - trial terms and privacy notice" required>
+            <span>I've read the <a href="#terms">trial terms</a> and the <a href="#privacy">privacy notice</a>.</span></label>
+          <span class="err" id="e-agreed">Tick this to send the request.</span>
+        </div>
+
+        <div class="send">
+          <button class="btn" type="submit" id="send">Request a trial</button>
+          <small>We read every request ourselves.</small>
+        </div>
+      </form>
+
+      <div class="done" id="done" tabindex="-1">
+        <span class="k">Request sent</span>
+        <h2>Thanks<span id="done-name"></span><span>.</span></h2>
+        <p>Your request has reached us. We read every one ourselves and reply within two working days to <b id="done-email"></b>.</p>
+        <p>Nothing is set up until you hear from us. What happens next:</p>
+        <ol>
+          <li>We reply with a short guide for whoever approves apps in your Microsoft 365.</li>
+          <li>They set it up - about 10 minutes - and share the link with your team.</li>
+          <li>Your 60 days start on the day the trial key goes in.</li>
+        </ol>
+        <p style="margin-top:16px">Nothing arrived after two working days? Check your junk folder, then email <a href="mailto:ross@trefnltd.com">ross@trefnltd.com</a>.</p>
+      </div>
+    </div>
+
+    <aside>
+      <h2>How a trial works</h2>
+      <ol class="steps">
+        <li><b><em>01</em>You ask</b><p>This form. We reply within two working days.</p></li>
+        <li><b><em>02</em>Your admin sets it up</b><p>About 10 minutes with a one-page guide.</p></li>
+        <li><b><em>03</em>Your team uses it</b><p>60 days, for real, on your own complaints.</p></li>
+        <li><b><em>04</em>You decide</b><p>Keep it, change it, or go bespoke. Your data stays put either way.</p></li>
+      </ol>
+      <div class="aside-card">Not ready? <a href="/demo/">Click through the demo first</a> - five minutes, no sign-up.</div>
+    </aside>
+  </div>
+
+  <div class="wrap legal-wrap">
+    <section id="terms">
+      <h2>Trial terms</h2>
+      <ul>
+        <li>The trial is free for 60 days, counted from the day your trial key goes in. No card, and nothing to pay unless you choose to keep it.</li>
+        <li>It runs in your company's Microsoft 365. Your records are kept in a SharePoint site you choose. Trefn's servers don't receive or store them.</li>
+        <li>Your Microsoft 365 admin approves the app and can remove it at any time.</li>
+        <li>When the trial ends, Trefn Complaints turns read only. Everyone can still open and export everything, and nothing is deleted - it's your SharePoint.</li>
+        <li>Keeping it costs £149 a month per company. We confirm the price in writing before you commit.</li>
+        <li>It's a trial: we fix problems as quickly as we can, but there's no guaranteed response time until you keep it.</li>
+        <li>One trial per company. We may say no to a request, for example where we can't support the set-up or there's a conflict with work we already do.</li>
+      </ul>
+    </section>
+    <section id="privacy">
+      <h2>Privacy notice - this form</h2>
+      <p><b>Who we are.</b> Trefn Ltd, company number 17427838, 17 Fairview Road, Nottingham NG5 4GW. Questions or requests: <a href="mailto:ross@trefnltd.com">ross@trefnltd.com</a>.</p>
+      <p><b>What we collect and why.</b> What you type above - to reply to your request and, if you want one, to set up your trial. We don't add you to a mailing list and we never sell or share your details.</p>
+      <p><b>Who handles it.</b> The form is sent through Formspree, a form service based in the United States, which passes it to us by email and keeps a copy under its <a href="https://formspree.io/legal/privacy-policy" rel="noopener">privacy policy</a>. This page also loads its fonts from Google Fonts, which sees your IP address.</p>
+      <p><b>How long.</b> If no trial goes ahead, we delete your request within 12 months. If it does, we keep your contact details while we work together.</p>
+      <p><b>Your rights.</b> You can ask to see, correct or delete what we hold about you. If you're unhappy with how we've handled it, you can complain to the Information Commissioner's Office at <a href="https://ico.org.uk/make-a-complaint/" rel="noopener">ico.org.uk</a>.</p>
+    </section>
+  </div>
+</main>
+
+<footer class="wrap">
+  <div class="footer-row">
+    <span>Trefn Ltd · Nottingham</span>
+    <span><a href="mailto:ross@trefnltd.com">ross@trefnltd.com</a> · <a href="https://www.linkedin.com/company/trefn-ltd">LinkedIn</a> · <a href="https://www.youtube.com/@TrefnLtd">YouTube</a></span>
+  </div>
+  <p class="legal">Trefn Ltd is registered in England and Wales, company number 17427838. Registered office: 17 Fairview Road, Nottingham NG5 4GW.</p>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  var form = document.getElementById('trial-form');
+  var sendBtn = document.getElementById('send');
+  var problem = document.getElementById('problem');
+  var done = document.getElementById('done');
+  var endpoint = form.getAttribute('action');
+  var connected = endpoint.indexOf('YOUR_' + 'FORM_ID') === -1; // the action line below the header is the only place to put the form ID
+  var TIMEOUT_MS = 20000;
+  var sending = false;
+
+  // The script takes over checking, so the page can say what's wrong in words.
+  // Without the script the browser's own checks run and the form posts normally.
+  form.setAttribute('novalidate', '');
+  if (!connected) document.getElementById('not-connected').classList.add('show');
+
+  var labels = {
+    name: 'Your name', email: 'Work email', company: 'Company', sector: 'What the company does',
+    microsoft_365: 'Microsoft 365', approves_apps: 'Who approves new apps', users: 'How many people',
+    tracked_today: 'How you track complaints today', agreed: 'Trial terms and privacy notice'
+  };
+  var checks = {
+    name: function (v) { return v.trim() !== ''; },
+    email: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); },
+    company: function (v) { return v.trim() !== ''; },
+    sector: function (v) { return v !== ''; },
+    microsoft_365: function (v) { return v !== ''; },
+    approves_apps: function (v) { return v !== ''; },
+    users: function (v) { return v !== ''; },
+    agreed: function (v) { return v !== ''; }
+  };
+
+  function value(name) {
+    var el = form.elements[name];
+    if (!el) return '';
+    if (el.type === 'checkbox') return el.checked ? el.value : '';
+    if (typeof el.length === 'number' && !el.tagName) { // radio group
+      for (var i = 0; i < el.length; i++) if (el[i].checked) return el[i].value;
+      return '';
+    }
+    return el.value;
+  }
+  function fieldBox(name) { return form.querySelector('[data-for="' + name + '"]'); }
+  function firstInput(name) { var b = fieldBox(name); return b && b.querySelector('input:not([type=hidden]), select, textarea'); }
+
+  function mark(name, bad, message) {
+    var box = fieldBox(name);
+    if (!box) return;
+    box.classList.toggle('bad', bad);
+    var err = document.getElementById('e-' + name);
+    if (err && message) err.textContent = message;
+    box.querySelectorAll('input, select, textarea').forEach(function (el) {
+      if (el.name === '_gotcha') return;
+      if (bad) { el.setAttribute('aria-invalid', 'true'); if (err) el.setAttribute('aria-errormessage', err.id); }
+      else { el.removeAttribute('aria-invalid'); el.removeAttribute('aria-errormessage'); }
+    });
+  }
+
+  function showProblem(title, html) {
+    problem.innerHTML = '<h2>' + title + '</h2>' + html;
+    problem.classList.add('show');
+    problem.scrollIntoView({ block: 'center' });
+    problem.focus({ preventScroll: true });
+  }
+  function clearProblem() { problem.classList.remove('show'); problem.innerHTML = ''; }
+
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+
+  // An email with their answers in, so nobody has to type it all again.
+  function mailtoLink() {
+    var lines = ['Trial request - Trefn Complaints', ''];
+    Object.keys(labels).forEach(function (k) { var v = value(k); if (v) lines.push(labels[k] + ': ' + v); });
+    return 'mailto:ross@trefnltd.com?subject=' + encodeURIComponent('Trial request - Trefn Complaints') + '&body=' + encodeURIComponent(lines.join('\n'));
+  }
+  function emailInstead(prefix) {
+    return '<p style="margin-top:6px">' + prefix + ' <a href="' + esc(mailtoLink()) + '">Send it by email instead</a> - your answers are already in it.</p>';
+  }
+
+  function validate() {
+    var wrong = [];
+    Object.keys(checks).forEach(function (k) {
+      var ok = checks[k](value(k));
+      mark(k, !ok);
+      if (!ok) wrong.push(k);
+    });
+    return wrong;
+  }
+
+  // Notes under the Microsoft 365 question.
+  function m365Notes() {
+    var v = value('microsoft_365');
+    document.getElementById('note-no').classList.toggle('show', v === 'No');
+    document.getElementById('note-unsure').classList.toggle('show', v === 'Not sure');
+  }
+  form.addEventListener('change', function (e) {
+    if (e.target.name === 'microsoft_365') m365Notes();
+    var name = e.target.name;
+    if (checks[name] && fieldBox(name) && fieldBox(name).classList.contains('bad') && checks[name](value(name))) mark(name, false);
+  });
+  form.addEventListener('input', function (e) {
+    var name = e.target.name;
+    if (checks[name] && fieldBox(name) && fieldBox(name).classList.contains('bad') && checks[name](value(name))) mark(name, false);
+  });
+  m365Notes();
+
+  function busy(on) {
+    sending = on;
+    sendBtn.disabled = on;
+    sendBtn.textContent = on ? 'Sending…' : 'Request a trial';
+  }
+
+  function succeeded() {
+    var name = value('name').trim().split(/\s+/)[0];
+    document.getElementById('done-name').textContent = name ? ', ' + name : '';
+    document.getElementById('done-email').textContent = value('email').trim();
+    form.style.display = 'none';
+    clearProblem();
+    done.classList.add('show');
+    done.scrollIntoView({ block: 'start' });
+    done.focus({ preventScroll: true });
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (sending) return;
+    clearProblem();
+
+    if (!connected) {
+      showProblem('Not sent - this form isn\'t connected yet', emailInstead('Nothing was sent from this page.'));
+      return;
+    }
+
+    var wrong = validate();
+    if (wrong.length) {
+      showProblem(wrong.length === 1 ? 'One thing to fix before it can be sent' : wrong.length + ' things to fix before it can be sent',
+        '<ul>' + wrong.map(function (k) { return '<li><a href="#" data-go="' + k + '">' + esc(labels[k]) + '</a> - ' + esc(document.getElementById('e-' + k).textContent) + '</li>'; }).join('') + '</ul>');
+      return;
+    }
+
+    if (navigator.onLine === false) {
+      showProblem('Not sent - you look to be offline', '<p>Check your connection, then press Request a trial again. Your answers are still here.</p>');
+      return;
+    }
+
+    busy(true);
+    var controller = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () { if (controller) controller.abort(); }, TIMEOUT_MS);
+
+    fetch(endpoint, { method: 'POST', body: new FormData(form), headers: { 'Accept': 'application/json' }, signal: controller ? controller.signal : undefined })
+      .then(function (res) {
+        if (res.ok) { clearTimeout(timer); busy(false); succeeded(); return; }
+        return res.text().then(function (text) {
+          clearTimeout(timer);
+          busy(false);
+          var data = null;
+          try { data = JSON.parse(text); } catch (x) { /* not JSON */ }
+          var errs = data && Array.isArray(data.errors) ? data.errors : [];
+          if (res.status === 429) {
+            showProblem('Not sent - too many tries from here just now', '<p>Wait a minute, then press Request a trial again. Your answers are still here.</p>' + emailInstead('In a hurry?'));
+            return;
+          }
+          if (errs.length) {
+            var items = errs.map(function (er) {
+              if (er.field && fieldBox(er.field)) mark(er.field, true, er.message);
+              return '<li>' + (er.field && labels[er.field] ? esc(labels[er.field]) + ': ' : '') + esc(er.message || 'not accepted') + '</li>';
+            }).join('');
+            showProblem('Not sent - the form service turned it down', '<ul>' + items + '</ul>' + emailInstead('Fix that and try again, or'));
+            return;
+          }
+          showProblem('Not sent - the form service answered with an error (' + res.status + ')', '<p>Your request did not arrive. Try again in a few minutes.</p>' + emailInstead('Or'));
+        });
+      })
+      .catch(function (err) {
+        clearTimeout(timer);
+        busy(false);
+        if (err && err.name === 'AbortError') {
+          showProblem('No answer after 20 seconds - we can\'t tell if it arrived', '<p>Press Request a trial again. If both arrive, we\'ll only reply once.</p>' + emailInstead('Or, to be sure,'));
+          return;
+        }
+        showProblem('Not sent - couldn\'t reach the form service', '<p>Check your connection, then press Request a trial again. Your answers are still here.</p>' + emailInstead('Or'));
+      });
+  });
+
+  // "Fix this" links in the problem box jump to the field.
+  problem.addEventListener('click', function (e) {
+    var a = e.target.closest('a[data-go]');
+    if (!a) return;
+    e.preventDefault();
+    var el = firstInput(a.getAttribute('data-go'));
+    if (el) { el.scrollIntoView({ block: 'center' }); el.focus({ preventScroll: true }); }
+  });
+})();
+</script>
+</body>
+</html>
