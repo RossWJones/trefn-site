@@ -4,12 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>!function(d){if(!window.matchMedia||!matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('motion');setTimeout(function(){if(!window.trefnReady)d.classList.remove('motion')},3000)}}(document.documentElement)</script>
-<title>Trefn - tailored operational software for growing businesses</title>
-<meta name="description" content="Trefn builds tailored operational software for growing businesses - connecting processes, people and information in one place. Built for how business really works.">
+<title>Trefn - operational software for growing businesses: ready-made packs, or built around you</title>
+<meta name="description" content="Trefn makes operational software for growing businesses - ready-made packs for quality, projects, sales, operations and marketing that run in your own Microsoft 365, or a system built around how your business works.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://trefnltd.com/">
 <meta property="og:title" content="Trefn - Built for how business really works">
-<meta property="og:description" content="Trefn builds tailored operational software for growing businesses - connecting processes, people and information in one place. Built for how business really works.">
+<meta property="og:description" content="Trefn makes operational software for growing businesses - ready-made packs for quality, projects, sales, operations and marketing that run in your own Microsoft 365, or a system built around how your business works.">
 <meta property="og:site_name" content="Trefn">
 <meta property="og:locale" content="en_GB">
 <meta property="og:image" content="https://trefnltd.com/og-image.png">
@@ -356,6 +356,42 @@
     .ticker span:nth-child(n+7) { display: none; }
     .btn::before { transition: none; }
   }
+
+  /* menu buttons: Try it free + Start a conversation (Nov 2026) */
+  .nav-btns { display: flex; align-items: center; gap: 10px; }
+  @media (max-width: 899px) {
+    .nav-btns { flex-direction: column; align-items: stretch; margin-top: 20px; }
+    .site-nav .nav-btns .btn { margin-top: 0; text-align: center; }
+  }
+
+  /* two ways in: packs or built for you (Nov 2026) */
+  .hero.wrap { padding-bottom: 34px; }
+  .doors { display: grid; grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); gap: 18px; padding-bottom: 28px; }
+  .door { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 26px 26px 24px; display: flex; flex-direction: column; }
+  .door.main { border: 2px solid var(--accent); }
+  .door .k { margin-bottom: 6px; }
+  .door h2 { font-size: clamp(24px, 3.4vw, 30px); margin-bottom: 10px; }
+  .door p { color: var(--ink-soft); font-size: 16px; }
+  .door p.price { margin-top: 16px; color: var(--ink); font-weight: 600; }
+  .door .actions { margin-top: auto; padding-top: 22px; }
+  .door-link { font-weight: 600; font-size: 15.5px; }
+  .pack-chips { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .pack-chips li { display: inline-flex; align-items: center; gap: 8px; padding: 5px 12px; border: 1px solid var(--line); border-radius: 999px; font-size: 14px; font-weight: 600; background: var(--paper); }
+  .pack-chips i, .pack-tiles i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; transform: rotate(12deg); flex: none; }
+  .showcase { padding-top: 28px; }
+  figure.shot { margin: 0; }
+  figure.shot img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 18px 40px -24px rgba(35, 42, 40, .45); background: #fff; }
+  figure.shot figcaption { margin-top: 10px; font-size: 13.5px; color: var(--ink-soft); }
+  .pack-tiles { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 24px; }
+  .pack-tiles a { display: flex; flex-direction: column; gap: 4px; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 14px 16px; text-decoration: none; color: var(--ink); transition: border-color .25s ease, transform .25s ease; }
+  .pack-tiles a:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .pack-tiles b { display: flex; align-items: center; gap: 8px; font-family: 'Zilla Slab', Georgia, serif; font-size: 18px; }
+  .pack-tiles span { font-size: 14px; color: var(--ink-soft); line-height: 1.4; }
+  @media (max-width: 860px) {
+    .doors { grid-template-columns: 1fr; }
+    .pack-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  @media (max-width: 420px) { .pack-tiles { grid-template-columns: 1fr; } }
 </style>
 <script type="application/ld+json">
 {
@@ -388,7 +424,7 @@
         "height": 512
       },
       "image": "https://trefnltd.com/og-image.png",
-      "description": "Trefn builds tailored operational software for growing businesses - connecting processes, people and information in one place.",
+      "description": "Trefn makes operational software for growing businesses - ready-made packs that run in your own Microsoft 365, or a system built around how your business works.",
       "slogan": "Built for how business really works.",
       "email": "ross@trefnltd.com",
       "foundingDate": "2026-08-28",
@@ -406,6 +442,9 @@
       },
       "knowsAbout": [
         "Tailored operational software",
+        "Quality management: complaints, non-conformances, audits and supplier approval",
+        "Sales pipeline and forecasting",
+        "Microsoft 365 and SharePoint apps",
         "Process mapping",
         "Project tracking",
         "Quoting and approvals",
@@ -445,13 +484,13 @@
     <a href="/" aria-label="Trefn home"><svg xmlns="http://www.w3.org/2000/svg" class="logo" role="img" aria-label="Trefn" viewBox="0 0 280.4 100"><title>Trefn</title><g transform="translate(6 22) scale(1)"><g fill="#232A28"><rect x="0" y="0" width="16" height="16" rx="3"/><rect x="24" y="0" width="16" height="16" rx="3"/><rect x="0" y="24" width="16" height="16" rx="3"/><rect x="24" y="24" width="16" height="16" rx="3"/><rect x="48" y="24" width="16" height="16" rx="3"/><rect x="0" y="48" width="16" height="16" rx="3"/><rect x="24" y="48" width="16" height="16" rx="3"/><rect x="48" y="48" width="16" height="16" rx="3"/></g><g class="logo-tile"><rect x="50" y="-7" width="16" height="16" rx="3" fill="#1B6B4F" transform="rotate(12 58 1)"/></g></g><path fill="#232A28" transform="translate(99.000 72) scale(0.07200 -0.07200)" d="M406 140Q396 62 352.0 26.0Q308 -10 238 -10Q163 -10 116.5 27.5Q70 65 70 135V359H6V451H70V588H199V451H361V359H199V157Q199 98 253 98Q265 98 285.5 108.5Q306 119 312 169Z"/><path fill="#232A28" transform="translate(126.936 72) scale(0.07200 -0.07200)" d="M314 457Q333 457 356.5 451.5Q380 446 403 432L423 274L325 263L308 340Q288 352 273 352Q251 352 234.5 335.0Q218 318 218 285V97H298V0H29V97H89V353H24V451H208V365Q219 404 243.5 430.5Q268 457 314 457Z"/><path fill="#232A28" transform="translate(157.968 72) scale(0.07200 -0.07200)" d="M463 142Q458 82 404.0 36.0Q350 -10 253 -10Q152 -10 86.5 47.0Q21 104 21 217Q21 321 80.5 390.5Q140 460 247 460Q341 460 399.5 406.0Q458 352 459 264Q459 231 452 199H156Q167 92 262 92Q314 92 332.5 117.0Q351 142 355 162ZM326 274Q330 308 311.5 338.0Q293 368 247 368Q207 368 185.0 342.0Q163 316 157 274Z"/><path fill="#232A28" transform="translate(192.024 72) scale(0.07200 -0.07200)" d="M269 698Q300 698 337.0 689.0Q374 680 405 657L425 535L325 524L303 595Q282 601 267 601Q217 601 217 541V451H328V359H217V97H292V0H28V97H88V359H33V451H88V520Q88 590 134.0 644.0Q180 698 269 698Z"/><path fill="#232A28" transform="translate(216.000 72) scale(0.07200 -0.07200)" d="M581 0H332V97H392V254Q392 312 372.5 337.0Q353 362 315 362Q269 362 244.0 333.5Q219 305 218 259V97H278V0H29V97H89V353H24V451H218V382Q263 460 363 460Q427 460 474.0 422.0Q521 384 521 304V97H581Z"/><path fill="#1B6B4F" transform="translate(257.976 72) scale(0.07200 -0.07200)" d="M37 0V163H190V0Z"/></svg></a>
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul>
+        <li><a href="/packs/" data-spy="packs">Packs</a></li>
         <li><a href="#see-it" data-spy="see-it">Demo</a></li>
-        <li><a href="#ross" data-spy="ross">About</a></li>
         <li><a href="#how" data-spy="how">How it works</a></li>
         <li><a href="/pelham-connect/" data-spy="proof">Case study</a></li>
         <li><a href="#questions" data-spy="questions">Questions</a></li>
       </ul>
-      <a class="btn small" href="#contact">Start a conversation</a>
+      <div class="nav-btns"><a class="btn small ghost" href="/trial/">Try it free</a><a class="btn small" href="#contact">Start a conversation</a></div>
     </nav>
     <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav"><span class="menu-icon" aria-hidden="true"></span><span class="menu-label">Menu</span></button>
   </div>
@@ -461,12 +500,8 @@
   <section class="hero wrap">
     <div class="hero-text">
       <h1 class="type">Built for how business really works.</h1>
-      <p class="intro" style="--d: 1.35s">Trefn builds tailored operational software for growing businesses - connecting processes, people and information in one place.</p>
+      <p class="intro" style="--d: 1.35s">Ready-made packs you can try in your own Microsoft 365 today - or a system built around how your business works. Either way, your records stay yours.</p>
       <p class="meaning intro" style="--d: 1.5s"><em>Rhoi trefn ar</em> - to put in order. That's the job, so that's the name. Say it "trevn".</p>
-      <div class="actions intro" style="--d: 1.65s">
-        <a class="btn" href="#contact">Start a conversation</a>
-        <a class="btn ghost" href="demo/">See it working</a>
-      </div>
     </div>
     <div class="tiles" aria-hidden="true">
       <i style="--c:0;--r:0;--n:0;--sx:-140px;--sy:-90px;--sr:-38deg"></i>
@@ -481,6 +516,43 @@
     </div>
   </section>
 
+  <section class="doors wrap" id="packs" aria-label="Two ways to start">
+    <div class="door main">
+      <span class="k">Start today</span>
+      <h2>Trefn packs</h2>
+      <p>Quality, Projects, Sales, Operations and Marketing - pick the ones you need. They run in your Microsoft 365, your records stay in your SharePoint, and everyone in the company can use them.</p>
+      <ul class="pack-chips">
+          <li><i aria-hidden="true" style="background:#1B6B4F"></i>Quality</li>
+          <li><i aria-hidden="true" style="background:#1E4A6D"></i>Projects</li>
+          <li><i aria-hidden="true" style="background:#6E2F57"></i>Sales</li>
+          <li><i aria-hidden="true" style="background:#A84F2A"></i>Operations</li>
+          <li><i aria-hidden="true" style="background:#8A6410"></i>Marketing</li>
+      </ul>
+      <p class="price">Free for 60 days. Then from £149 a month for the company - £399 for all five.</p>
+      <div class="actions"><a class="btn" href="/trial/">Try it free</a><a class="btn ghost" href="/packs/">See the packs</a></div>
+    </div>
+    <div class="door">
+      <span class="k">Built for you</span>
+      <h2>A system around your process</h2>
+      <p>When the work doesn't fit a pack: Ross sits with the people doing it, finds the friction and builds the system around the answers - like Pelham Connect. The first conversation is free.</p>
+      <div class="actions"><a class="btn ghost" href="#contact">Start a conversation</a><a class="door-link" href="/pelham-connect/">Read the Pelham story</a></div>
+    </div>
+  </section>
+
+  <section class="wrap showcase" aria-label="Trefn packs">
+    <figure class="shot">
+      <img src="/packs/home.webp" width="1920" height="1200" loading="lazy" decoding="async" alt="Trefn Home: next for you from every pack, most urgent first, and a getting started list for each pack">
+      <figcaption>Trefn Home - what is next for you, from every pack. A made-up company with made-up data.</figcaption>
+    </figure>
+    <ul class="pack-tiles">
+      <li><a href="/packs/#quality"><b><i aria-hidden="true" style="background:#1B6B4F"></i>Quality</b><span>Complaints, NCs, audits, suppliers, training</span></a></li>
+      <li><a href="/packs/#projects"><b><i aria-hidden="true" style="background:#1E4A6D"></i>Projects</b><span>Plans, holds, capacity, weekly meeting</span></a></li>
+      <li><a href="/packs/#sales"><b><i aria-hidden="true" style="background:#6E2F57"></i>Sales</b><span>Leads, pipeline, live forecast, quotes</span></a></li>
+      <li><a href="/packs/#operations"><b><i aria-hidden="true" style="background:#A84F2A"></i>Operations</b><span>Requests, deliveries, checks, systems</span></a></li>
+      <li><a href="/packs/#marketing"><b><i aria-hidden="true" style="background:#8A6410"></i>Marketing</b><span>Creative, social calendar, metrics</span></a></li>
+    </ul>
+  </section>
+
   <div class="ticker" aria-hidden="true">
     <div class="ticker-track">
       <span>Where is that project up to?</span><span>Who owns the next step?</span><span>Why is this late?</span><span>Can the customer see status?</span><span>What needs attention today?</span><span>Why are there three answers?</span>
@@ -493,9 +565,9 @@
     <h2>What is Trefn?</h2>
     <div class="two">
       <div>
-        <p>Trefn creates tailored operational systems for growing businesses.</p>
+        <p>Trefn creates operational systems for growing businesses.</p>
         <p>Think of it as the connected layer between your people, your processes and the software you already use.</p>
-        <p><strong>It is not one fixed product.</strong> It is built around how your business actually works - so the system fits the process, not the other way round.</p>
+        <p><strong>Start with a pack, or have it built around you.</strong> The packs cover the work most businesses share. When yours works differently, the system is built around how your business actually works - so it fits the process, not the other way round.</p>
       </div>
       <div class="layer" role="img" aria-label="People, process and systems, joined up by Trefn into one connected way of working">
         <div class="node"><b>People</b><span>Teams doing the work</span></div>
@@ -683,14 +755,16 @@
     <span class="k">Questions</span>
     <h2>Questions people ask.</h2>
     <div class="faq-list">
-      <details class="qa"><summary>Is this bespoke software?</summary><p>Yes. It is not one fixed product. It is built around how your business actually works - not a generic tool, but the screens a team actually needs to run the work.</p></details>
+      <details class="qa"><summary>Is this bespoke software, or ready-made?</summary><p>Both. The packs are ready-made and run in your own Microsoft 365 - you can try them free for 60 days. A bespoke system is built around how your business actually works - not a generic tool, but the screens a team actually needs to run the work.</p></details>
+      <details class="qa"><summary>What is in the packs?</summary><p>Quality (complaints, non-conformances, changes, audits, supplier approval and training), Projects, Sales, Operations and Marketing. They share one Home, one list of what is yours to do, and the same customers, suppliers and products. <a href="/packs/">See the packs</a>.</p></details>
+      <details class="qa"><summary>With the packs, where does our data go?</summary><p>Into a SharePoint site you choose, in your own Microsoft 365. Trefn's servers never receive it. Your Microsoft 365 admin approves the app and can remove it at any time, and you can export everything whenever you like.</p></details>
       <details class="qa"><summary>We have outgrown our spreadsheets. Is Trefn for us?</summary><p>Probably. Most work starts where good people are fighting bad systems: spreadsheets, shared folders, email trails and three answers to the same question. Trefn moves that into one connected system.</p></details>
       <details class="qa"><summary>Will it replace the software we already use?</summary><p>It can. Sometimes the right answer is to connect the software you already use. Sometimes it is to replace the tools that cost more than they give back - one connected system instead of several separate subscriptions can save a business a lot of money. The first conversation works out which.</p></details>
       <details class="qa"><summary>What kind of businesses is it for?</summary><p>Growing businesses where work passes between people and teams - for example manufacturing, installation, field service, logistics and wholesale. If the answer to "where is that up to?" lives in spreadsheets, inboxes and people's heads, it is worth a conversation.</p></details>
       <details class="qa"><summary>Who will we work with?</summary><p>Ross. You do not get passed from salesperson to account manager to developer. The person understanding the problem is the person creating the system.</p></details>
       <details class="qa"><summary>Where are you based? Do you come on site?</summary><p>Trefn is based in Nottingham. Ross works on site or remotely - whichever suits the work - with businesses across the UK.</p></details>
       <details class="qa"><summary>How does it start?</summary><p>With the process everyone hates. The first conversation is free, and it is not about software. It is about what is slowing the business down, where information gets lost, and whether Trefn is the right fit.</p></details>
-      <details class="qa"><summary>How is it priced?</summary><p>Every system is different, so there is no price list. After the first conversation you get a written proposal with a fixed price within a week. No day rates. No estimates that grow.</p></details>
+      <details class="qa"><summary>How is it priced?</summary><p>The packs have a price list: £149 a month for the first, £99 a month for each extra one, and £399 a month for all five - per company, with everyone in it able to use them. Bespoke systems are all different, so there is no price list: after the first conversation you get a written proposal with a fixed price within a week. No day rates. No estimates that grow.</p></details>
       <details class="qa"><summary>What happens once it is live?</summary><p>It keeps improving. The system changes because the business changes, so support is agreed in the proposal - fixes, improvements and changes as the business grows.</p></details>
     </div>
   </section>
@@ -704,6 +778,7 @@
         <p>The first conversation is not about software. It is about understanding what is slowing the business down, where information gets lost, and whether Trefn is the right fit.</p>
         <p>You do not need to know what system you need. You just need to know what is not working.</p>
         <span class="demo-link">Want to see it first? <a href="demo/">Try the demo</a> - five minutes, no sign-up.</span>
+        <span class="demo-link">Or start today: <a href="/trial/">try the packs free for 60 days</a>.</span>
         <span class="demo-link where">Based in Nottingham. On site or remote, across the UK.</span>
       </div>
       <a class="btn" href="mailto:ross@trefnltd.com?subject=The%20process%20everyone%20hates">Email ross@trefnltd.com</a>
@@ -825,9 +900,10 @@
     });
 
     // Things that rise into view as you scroll
-    var singles = 'main section:not(.hero) .k, .block > p, .person > *, .faq-list, .band p:not(.frags), .two > div, .hs-foot .strap, .hs-foot .actions, .actions:not(.intro), .cta p, .cta .demo-link, .cta .btn, .ba, .watch-text > p, figure.video';
+    var singles = 'figure.shot, main section:not(.hero):not(.doors) .k, .block > p, .person > *, .faq-list, .band p:not(.frags), .two > div, .hs-foot .strap, .hs-foot .actions, .actions:not(.intro), .cta p, .cta .demo-link, .cta .btn, .ba, .watch-text > p, figure.video';
     Array.prototype.forEach.call(document.querySelectorAll(singles), function (el) { el.classList.add('rv'); });
-    Array.prototype.forEach.call(document.querySelectorAll('.cards, .quotes, .vs, .layer, .flow'), function (g) {
+    Array.prototype.forEach.call(document.querySelectorAll('.doors > .door'), function (d, i) { d.classList.add('rv'); d.style.setProperty('--d', (1.7 + i * 0.12) + 's'); });
+    Array.prototype.forEach.call(document.querySelectorAll('.cards, .quotes, .vs, .layer, .flow, .pack-tiles'), function (g) {
       Array.prototype.forEach.call(g.children, function (c, i) {
         c.classList.add('rv');
         c.style.setProperty('--d', (i % 4) * 0.08 + 's');
