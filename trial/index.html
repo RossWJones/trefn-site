@@ -185,11 +185,6 @@
 
   <div class="wrap grid">
     <div class="card">
-      <div class="box warn" id="not-connected" role="alert">
-        <h2>This form isn't connected yet</h2>
-        Requests can't be sent from this page yet. Please email <a href="mailto:ross@trefnltd.com?subject=Trial%20request">ross@trefnltd.com</a> instead.
-      </div>
-
       <div class="box bad" id="problem" role="alert" tabindex="-1"></div>
 
       <form id="trial-form" method="POST" action="https://formspree.io/f/xaeoyeqo">
@@ -376,7 +371,6 @@
   // The script takes over checking, so the page can say what's wrong in words.
   // Without the script the browser's own checks run and the form posts normally.
   form.setAttribute('novalidate', '');
-  if (!connected) document.getElementById('not-connected').classList.add('show');
 
   var labels = {
     name: 'Your name', email: 'Work email', company: 'Company', sector: 'What the company does',
